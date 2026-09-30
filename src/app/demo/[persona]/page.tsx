@@ -7,7 +7,7 @@ import { PERSONA_IDS, personaIdSchema } from "@/lib/data/personas";
 import { loadPersonas } from "@/lib/data/store";
 
 export const dynamicParams = false;
-// Persona data is read from Firestore (bundled fallback) and refreshed every 5 minutes.
+// Persona data is read from Supabase (offline snapshot as fallback) and refreshed every 5 minutes.
 export const revalidate = 300;
 
 export function generateStaticParams() {

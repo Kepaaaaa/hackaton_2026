@@ -10,7 +10,7 @@ const PRINCIPLES = [
   { k: "Scale", v: "A tiny calculation per customer, no shared state. A new case is data and a rule." },
 ];
 
-// Persona data is read from Firestore (bundled fallback) and refreshed every 5 minutes.
+// Persona data is read from Supabase (offline snapshot as fallback) and refreshed every 5 minutes.
 export const revalidate = 300;
 
 export default async function Home() {

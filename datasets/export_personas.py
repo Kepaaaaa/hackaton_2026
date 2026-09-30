@@ -4,8 +4,8 @@
     python3 export_personas.py --db output_personas/bank.sqlite
 
 Writes ../src/lib/data/personas.generated.json: real accounts, balances and signal facts computed from
-each persona's transactions. The app bundles it as its fallback and seeds Firestore with it
-(scripts/seed-firestore.mjs). Customer n is identical in a 4-customer run and in the 10,000-customer run.
+each persona's transactions. The app bundles it as its offline snapshot and loads it into Supabase
+(scripts/supabase-seed.mjs). Customer n is identical in a 4-customer run and in the 10,000-customer run.
 """
 import argparse
 import json

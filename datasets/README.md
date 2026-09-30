@@ -30,20 +30,6 @@ It needs only `numpy` and `pandas` (see `requirements.txt`). The output is deter
 Each run writes `output/report.md`: volumes, balance checks, how visible each event is, and a check of the
 demo personas. `output/` is ignored by Git, because the files are too large for the repository.
 
-## Google Cloud
-
-The datasets go to **BigQuery**, in three datasets located in the EU:
-
-```bash
-pip install google-cloud-bigquery
-export GCP_PROJECT_ID=... GCP_CLIENT_EMAIL=... GCP_PRIVATE_KEY="..."   # the same variables as the app
-python3 upload_bigquery.py --dry-run     # shows tables, row counts and schemas
-python3 upload_bigquery.py               # loads kbcfit_bank, kbcfit_web, kbcfit_labels
-```
-
-The service account key is read from the environment and is never stored in Git. The labels are loaded into
-their own dataset, so access to the ground truth can be restricted separately.
-
 ## The three databases
 
 | File | Who may read it | Content |
@@ -191,13 +177,12 @@ account digits match `src/lib/data/personas.ts`:
 ```bash
 python3 -m kbcfit_data --customers 4 --out output_personas   # the four personas only, in seconds
 python3 export_personas.py                                    # -> src/lib/data/personas.generated.json
-GCP_PROJECT_ID=... GCP_CLIENT_EMAIL=... GCP_PRIVATE_KEY="..." node ../scripts/seed-firestore.mjs   # -> Firestore
+node ../scripts/supabase-seed.mjs                              # -> supabase/seed.sql
 ```
 
-The app (`src/lib/data/store.ts`) reads the personas from Firestore on the server and falls back to the
-bundled `personas.generated.json` when Firestore is not configured or unreachable. The accounts, balances and
-signal details on screen come from the database. The narrative and the scenario parameters stay in
-`src/lib/data/personas.ts`.
+The app (`src/lib/data/store.ts`) reads the personas from Supabase on the server and falls back to the
+bundled `personas.generated.json` when Supabase is not configured or unreachable. Everything on screen about the customer comes from the database: `src/lib/engine/profile.ts` builds each persona
+(chips, signals, situation, amounts) from its record. Only product rules stay in the code.
 
 ## Using it for machine learning
 

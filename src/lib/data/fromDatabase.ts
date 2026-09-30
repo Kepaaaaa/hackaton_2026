@@ -1,7 +1,7 @@
 import type { Account } from "@/lib/engine/types";
 
 // One persona as exported from the synthetic bank database (datasets/export_personas.py).
-// The same shape is stored in Firestore (collection `personas`) and bundled as the fallback.
+// The same shape is stored in Supabase (table `personas`, column `record`) and bundled as the offline snapshot.
 export interface PersonaRecord {
   customerId: string;
   firstName: string;

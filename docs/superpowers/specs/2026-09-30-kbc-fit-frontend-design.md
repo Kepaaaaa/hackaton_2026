@@ -2,7 +2,7 @@
 
 Scope: the P3 mission of `KBC_Context_Tectonic_Hackathon.md` (front end), plus the minimum needed to run it:
 a frozen engine contract, a **mock engine** that P1 replaces, and seed data for the four personas that P2 replaces.
-Out of scope: `/how-it-works` (P4), Firestore (P2), login.
+Out of scope: `/how-it-works` (P4), login. Data: Supabase (see supabase/).
 
 Visual identity: KBC Design Language, see `docs/kbc-brand.md`.
 
@@ -39,7 +39,7 @@ src/
     engine/mock.ts                 mock evaluate() (P1 replaces)
     engine/mock.test.ts
     engine/index.ts                re-exports evaluate from mock (the only line to change)
-    data/personas.ts               seed data (P2 replaces / wraps with Firestore)
+    data/personas.ts               persona ids + offline snapshot; personas are built from Supabase records
     format.ts                      EUR and date formatting (en-BE)
 ```
 

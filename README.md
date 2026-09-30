@@ -131,7 +131,19 @@ npm run dev          # http://localhost:3000
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run lint` | ESLint |
 
-No environment variables are needed to run the demo: the personas ship as seed data in the repository.
+No environment variables are needed to run the demo: without Supabase, the site reads the offline snapshot of the database and shows an "Offline snapshot" badge.
+
+**With a local Supabase** (Docker required):
+
+```bash
+npx supabase start                  # applies supabase/migrations and loads supabase/seed.sql
+# then, in .env.local (ignored by Git):
+#   SUPABASE_URL=http://127.0.0.1:54321
+#   SUPABASE_PUBLISHABLE_KEY=<PUBLISHABLE_KEY printed by supabase start>
+npm run dev                         # the badge now says "Live: Supabase"
+```
+
+**On Vercel:** add the Supabase integration to the project. It sets `SUPABASE_URL` and `SUPABASE_PUBLISHABLE_KEY`. Then create the table and load the data once, in the Supabase SQL editor: run `supabase/migrations/*_personas.sql`, then `supabase/seed.sql`. Or from a terminal: `npx supabase link` then `npx supabase db push --include-seed`.
 
 ---
 
@@ -142,19 +154,20 @@ src/
   app/                  /, /demo/[persona]
   components/
     home/               persona picker cards
-    demo/               activation panel, behind-the-scenes panel
+    demo/               activation panel, problems panel
     phone/              BEFORE and AFTER phone screens
     brand/              logo, header, footer
   lib/
     engine/             types, decision rules, tests  <- the frozen contract
-    data/               Firestore access, bundled fallback, portrait mapping
-datasets/               synthetic data generator (Python) and BigQuery upload
+    data/               Supabase access, offline snapshot, portrait mapping
+datasets/               synthetic data generator (Python)
+supabase/               migration (table personas, RLS) and seed.sql
 docs/
   kbc-brand.md          KBC Design Language tokens
   assets/               images used by this README
 scripts/
   personas.mjs          regenerates the persona portraits
-  seed-firestore.mjs    loads the personas into Firestore
+  supabase-seed.mjs     writes supabase/seed.sql from the database export
 public/
   brand/  personas/     logo and portrait assets
 ```
@@ -162,8 +175,8 @@ public/
 ## Data and security
 
 - **100% synthetic data.** No real customer, no real account and no real IBAN anywhere in this repository. The personas are exported from a generator that simulates 10,000 Belgian retail customers over 24 months — accounts, transactions, insurance and web sessions, each with a reason behind it. See [`datasets/README.md`](datasets/README.md).
-- Persona data lives in **Google Cloud** — Firestore for the app data, BigQuery for the synthetic ML datasets — read server-side with a service account. If Google Cloud is unreachable, the app **falls back to the seed data bundled in the repository** and never shows an error page.
-- Secrets (`GCP_PROJECT_ID`, `GCP_CLIENT_EMAIL`, `GCP_PRIVATE_KEY`) live in Vercel environment variables, **never in Git**. This repository is public.
+- Persona data lives in **Supabase** (table `personas`), read on the server with the publishable key. **No customer data is written in the code**: every persona is built from its database record. If Supabase is unreachable, the app **falls back to an offline snapshot of the same records** and never shows an error page.
+- The table is **read-only**: RLS is on and the Data API roles can only `select`. The app uses no secret key. Keys live in Vercel environment variables, **never in Git**. This repository is public.
 - Inputs are validated with Zod. Persona slugs are a fixed allow-list, so unknown routes 404 instead of doing a free-form lookup.
 - Security headers (CSP, `frame-ancestors`, `Referrer-Policy`, `nosniff`, `Permissions-Policy`) are set in [`next.config.ts`](next.config.ts).
 
@@ -173,10 +186,9 @@ public/
 |---|---|
 | Persona picker and demo screens | Done |
 | Decision engine and unit tests | Done |
-| BEFORE/AFTER transition, behind-the-scenes panel | Done |
-| Personas read from Firestore, with bundled fallback | Done |
+| BEFORE/AFTER transition, problems panel | Done |
+| Personas built from Supabase records, with offline snapshot | Done |
 | Synthetic dataset generator (bank, web, ground truth) | Done |
-| BigQuery upload of the synthetic datasets | In progress |
 | `/how-it-works` explanation page | Planned |
 | Login | Last step, only if time allows |
 
