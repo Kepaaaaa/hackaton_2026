@@ -1,1 +1,100 @@
-[]
+[
+  {
+    "id": "lucas",
+    "first_name": "Lucas",
+    "age": 24,
+    "profile": {
+      "life_stage": "young_professional",
+      "employment": {"status": "employed", "type": "salaried"},
+      "income_stage": "first_recurring_salary",
+      "housing": {"status": "tenant", "mortgage": false},
+      "family": {"status": "single", "children": 0},
+      "financial_profile": {"savings_level": "low", "income_stability": "stable", "financial_maturity": "beginner"}
+    },
+    "accounts": [
+      {"id": "acc_lucas_current", "type": "current", "label": "KBC Current Account", "masked_number": "•••• 4821", "balance": 3280.00},
+      {"id": "acc_lucas_savings", "type": "savings", "label": "KBC Start2Save", "masked_number": "•••• 7390", "balance": 1800.00}
+    ],
+    "products": [
+      {"product": "current_account", "since": "2020-09-14"},
+      {"product": "debit_card", "since": "2020-09-14"},
+      {"product": "savings_account", "since": "2021-02-03"}
+    ],
+    "consent": {"personalization": true}
+  },
+  {
+    "id": "julie",
+    "first_name": "Julie",
+    "age": 31,
+    "profile": {
+      "life_stage": "established",
+      "employment": {"status": "employed", "type": "salaried"},
+      "income_stage": "established",
+      "housing": {"status": "homeowner", "mortgage": true},
+      "family": {"status": "partner", "children": 0},
+      "financial_profile": {"savings_level": "medium", "income_stability": "stable", "financial_maturity": "intermediate"}
+    },
+    "accounts": [
+      {"id": "acc_julie_current", "type": "current", "label": "KBC Current Account", "masked_number": "•••• 1567", "balance": 2900.00},
+      {"id": "acc_julie_savings", "type": "savings", "label": "KBC Savings Account", "masked_number": "•••• 6044", "balance": 2400.00}
+    ],
+    "products": [
+      {"product": "current_account", "since": "2014-06-02"},
+      {"product": "savings_account", "since": "2016-01-11"},
+      {"product": "mortgage", "since": "2022-04-29", "details": {"remaining_years": 21.0}},
+      {"product": "home_insurance", "since": "2022-04-29"}
+    ],
+    "consent": {"personalization": true}
+  },
+  {
+    "id": "marc",
+    "first_name": "Marc",
+    "age": 66,
+    "profile": {
+      "life_stage": "retired",
+      "employment": {"status": "retired", "type": "none"},
+      "income_stage": "pension",
+      "housing": {"status": "homeowner", "mortgage": false},
+      "family": {"status": "married", "children": 2},
+      "financial_profile": {"savings_level": "high", "income_stability": "stable", "financial_maturity": "intermediate"}
+    },
+    "accounts": [
+      {"id": "acc_marc_current", "type": "current", "label": "KBC Current Account", "masked_number": "•••• 2208", "balance": 54400.00}
+    ],
+    "products": [
+      {"product": "current_account", "since": "1987-03-16"},
+      {"product": "home_insurance", "since": "1995-10-02"}
+    ],
+    "consent": {"personalization": true}
+  },
+  {
+    "id": "claire",
+    "first_name": "Claire",
+    "age": 38,
+    "profile": {
+      "life_stage": "family",
+      "employment": {"status": "employed", "type": "salaried"},
+      "income_stage": "established",
+      "housing": {"status": "homeowner", "mortgage": true},
+      "family": {"status": "married", "children": 1},
+      "financial_profile": {"savings_level": "high", "income_stability": "stable", "financial_maturity": "experienced"}
+    },
+    "accounts": [
+      {"id": "acc_claire_current", "type": "current", "label": "KBC Current Account", "masked_number": "•••• 9132", "balance": 4000.00},
+      {"id": "acc_claire_savings", "type": "savings", "label": "KBC Savings Account", "masked_number": "•••• 3475", "balance": 18000.00}
+    ],
+    "products": [
+      {"product": "current_account", "since": "2009-09-01"},
+      {"product": "savings_account", "since": "2011-05-17"},
+      {"product": "mortgage", "since": "2017-08-21", "details": {"remaining_years": 12.0}},
+      {"product": "home_insurance", "since": "2017-08-21"},
+      {"product": "car_insurance", "since": "2019-03-04", "details": {"coverage": "omnium"}},
+      {"product": "travel_insurance", "since": "2018-06-12", "details": {"coverage": "worldwide"}},
+      {"product": "family_insurance", "since": "2020-11-30"},
+      {"product": "pension_savings", "since": "2012-01-09"},
+      {"product": "investment_plan", "since": "2019-10-15"},
+      {"product": "child_savings_account", "since": "2020-12-07"}
+    ],
+    "consent": {"personalization": true}
+  }
+]

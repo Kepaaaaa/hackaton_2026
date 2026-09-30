@@ -1,1 +1,76 @@
-[]
+[
+  {
+    "id": "electric_car",
+    "title": "Electric car project",
+    "description": "A well-covered customer starts looking into an electric car. Confidence builds step by step; car insurance that is already owned is never sold again.",
+    "customer_id": "claire",
+    "steps": [
+      {"label": "Deposit paid at an EV dealership", "events": [
+        {"type": "TRANSACTION", "data": {"direction": "out", "amount": 500.00, "category": "automotive", "merchant": "EV Motors Brussels"}}
+      ]},
+      {"label": "Views the electric car loan page", "events": [
+        {"type": "PAGE_VIEW", "data": {"page": "electric_car_loan"}}
+      ]},
+      {"label": "Simulates a €25,000 electric car loan over 60 months", "events": [
+        {"type": "SIMULATION", "data": {"simulation_type": "electric_car_loan", "amount": 25000, "duration_months": 60}}
+      ]},
+      {"label": "Searches KBC for an electric car loan", "events": [
+        {"type": "KBC_SEARCH", "data": {"query": "electric car loan"}}
+      ]}
+    ]
+  },
+  {
+    "id": "travel_covered",
+    "title": "Trip, already covered",
+    "description": "A customer who already owns worldwide travel insurance books a trip: KBC reassures instead of selling.",
+    "customer_id": "claire",
+    "steps": [
+      {"label": "Books flights and a hotel", "events": [
+        {"type": "TRANSACTION", "data": {"direction": "out", "amount": 420.00, "category": "airline", "merchant": "Brussels Airlines"}},
+        {"type": "TRANSACTION", "data": {"direction": "out", "amount": 610.00, "category": "hotel", "merchant": "Hotel Arts Barcelona"}}
+      ]},
+      {"label": "Checks card settings for abroad", "events": [
+        {"type": "PAGE_VIEW", "data": {"page": "card_abroad_settings"}}
+      ]}
+    ]
+  },
+  {
+    "id": "travel_uncovered",
+    "title": "Trip, not covered",
+    "description": "A customer without travel insurance books a trip: travel insurance becomes an available option.",
+    "customer_id": "lucas",
+    "steps": [
+      {"label": "Books flights and a hotel", "events": [
+        {"type": "TRANSACTION", "data": {"direction": "out", "amount": 189.00, "category": "airline", "merchant": "Ryanair"}},
+        {"type": "TRANSACTION", "data": {"direction": "out", "amount": 240.00, "category": "hotel", "merchant": "Booking.com"}}
+      ]}
+    ]
+  },
+  {
+    "id": "cashflow_shock",
+    "title": "Investment interest, then a cash-flow shock",
+    "description": "A customer explores investing, then an unexpected garage bill arrives: support replaces the commercial offer.",
+    "customer_id": "lucas",
+    "steps": [
+      {"label": "Explores investing on KBC", "events": [
+        {"type": "PAGE_VIEW", "data": {"page": "investment_info"}},
+        {"type": "SIMULATION", "data": {"simulation_type": "investment_plan", "amount": 50, "duration_months": 120}},
+        {"type": "KBC_SEARCH", "data": {"query": "start investing"}}
+      ]},
+      {"label": "Unexpected garage repair of €1,500", "events": [
+        {"type": "TRANSACTION", "data": {"direction": "out", "amount": 1500.00, "category": "unexpected_expense", "merchant": "Garage Dubois"}}
+      ]}
+    ]
+  },
+  {
+    "id": "not_relevant",
+    "title": "Customer says: not relevant",
+    "description": "The customer dismisses the suggested journey; KBC stops pushing it.",
+    "customer_id": "lucas",
+    "steps": [
+      {"label": "Marks the financial foundation journey as not relevant", "events": [
+        {"type": "RECOMMENDATION_FEEDBACK", "data": {"journey": "FINANCIAL_FOUNDATION", "feedback": "NOT_RELEVANT"}}
+      ]}
+    ]
+  }
+]
