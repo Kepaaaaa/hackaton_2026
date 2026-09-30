@@ -88,11 +88,20 @@ def _low_confidence(d: _Draft, ctx: _Ctx, p: Mapping[str, Any]) -> str | None:
     return f"Intent confidence {ic:.2f} is below {threshold:.2f}." if ic < threshold else None
 
 
+def _days_ago(days: float) -> str:
+    whole = max(0, int(days))
+    if whole == 0:
+        return "today"
+    if whole == 1:
+        return "yesterday"
+    return f"{whole} days ago"
+
+
 def _feedback_dismissed(d: _Draft, ctx: _Ctx, p: Mapping[str, Any]) -> str | None:
     days = ctx.feedback.dismissed_days_ago.get(d.journey.type)
     if days is None or days > float(p.get("window_days", 30)):
         return None
-    return f"The customer marked this as not relevant {int(days)} day(s) ago."
+    return f"The customer marked this as not relevant {_days_ago(days)}."
 
 
 def _cashflow_risk(d: _Draft, ctx: _Ctx, p: Mapping[str, Any]) -> str | None:
@@ -251,7 +260,7 @@ class DecisionEngine:
             Evidence(kind="moment", ref=timing_moment.type.value if timing_moment else "timing",
                      contribution=contributions["timing_relevance"],
                      detail=(f"{timing_moment.type.value} detected "
-                             f"{max(0, (ctx.now - timing_moment.detected_at).days)} day(s) ago."
+                             f"{_days_ago((ctx.now - timing_moment.detected_at).days)}."
                              if timing_moment else "No active life moment behind this need.")),
             Evidence(kind="rule", ref="usefulness", contribution=contributions["usefulness"],
                      detail=f"Journey usefulness {usefulness:.2f}"
@@ -269,7 +278,7 @@ class DecisionEngine:
         ]
         if penalty:
             evidence.append(Evidence(kind="feedback", ref=FeedbackType.LATER.value, contribution=-_r(penalty),
-                                     detail=f"The customer asked to see this later ({int(later_days)} day(s) ago)."))
+                                     detail=f"The customer asked to see this later, {_days_ago(later_days)}."))
 
         return _Draft(
             journey=journey,

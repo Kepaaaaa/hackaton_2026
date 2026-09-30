@@ -134,6 +134,16 @@ def test_not_relevant_feedback_dismisses_journey():
     assert {s.journey: s.rule for s in d.suppressed}[JourneyType.FINANCIAL_FOUNDATION] == "FEEDBACK_DISMISSED"
 
 
+@pytest.mark.parametrize(("days_ago", "wording"), [(0, "today"), (1, "yesterday"), (5, "5 days ago")])
+def test_feedback_reason_reads_naturally(days_ago, wording):
+    moments, intents = _first_salary_inputs()
+    fb = make_event("RECOMMENDATION_FEEDBACK", {"journey": "FINANCIAL_FOUNDATION", "feedback": "NOT_RELEVANT"},
+                    days_ago=days_ago)
+    d = _decide(snapshot=make_snapshot(**FIRST_SALARY_SNAPSHOT), moments=moments, intents=intents, events=[fb])
+    reason = {s.journey: s.reason for s in d.suppressed}[JourneyType.FINANCIAL_FOUNDATION]
+    assert reason == f"The customer marked this as not relevant {wording}."
+
+
 def test_old_or_overridden_feedback_is_ignored():
     moments, intents = _first_salary_inputs()
     old = make_event("RECOMMENDATION_FEEDBACK", {"journey": "FINANCIAL_FOUNDATION", "feedback": "NOT_RELEVANT"}, days_ago=40)
