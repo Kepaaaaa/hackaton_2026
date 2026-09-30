@@ -22,26 +22,26 @@ And when nothing is useful, it says so.
 
 ## The problem
 
-A banking app knows an enormous amount about a customer — a salary arriving every month, which products they hold, how much has not moved in a year. Almost none of it reaches the screen.
+Here is the home screen of the banking app as it is today.
 
-Look at what today's app offers two very different people. On the left, Lucas: 24, first job, renting, €1,800 in savings, no pension product. On the right, Monique: 66, retired, homeowner, **€54,400 sitting on a current account**.
+<div align="center">
+<img src="docs/assets/todays-app.png" width="330" alt="Today's banking app: a list of accounts and payment cards, and nothing else">
+</div>
 
-| Lucas, 24 — first salary, renting | Monique, 66 — retired, €54,400 on the current account |
-| :---: | :---: |
-| <img src="docs/assets/before-lucas.png" width="330" alt="Today's app for Lucas: generic home loan and insurance banners"> | <img src="docs/assets/before-monique.png" width="330" alt="Today's app for Monique: the identical generic banners"> |
+It is an **inventory**. Three accounts, two debit cards, the balances. It tells the customer *what they have*, and stops there.
 
-Both see the **identical** "For you" section: *Dreaming of your own home?* and *Protect what matters*. The app offers a mortgage to someone who cannot yet afford one, and the same mortgage to a retired homeowner who already owns her house. Meanwhile €40,000 of Monique's money earns nothing, and nobody mentions it.
+What it never tells them is what any of it means:
 
-That is the whole problem in one picture:
+- **Nothing adapts.** The same list, in the same order, whether the account holds €340 or €54,400, whether the customer is 24 and renting or 66 and retired. Nothing on this screen is a function of who is looking at it.
+- **Nothing is proposed.** There is no suggestion tied to this customer's actual situation. The screen has no opinion.
+- **There is no plan.** No target, no amount, no horizon. Nothing says what to do next, in what order, or by when.
+- **Nothing is explained.** A balance is a number without context. Is this too much to leave on a current account? Is something missing? The app does not say — so the customer has to already know what to ask.
 
-- **No personalisation.** The blocks are hardcoded. Age, products held, account movement — none of it changes what is shown.
-- **Nothing actionable.** A banner is an advert, not advice. There is no amount, no deadline, no sense of where the customer stands.
-- **No plan.** Nothing says what to do next, in what order, or by when.
-- **No restraint.** The app always has something to sell, even to a customer who needs nothing. So customers learn to ignore it.
+The information needed to do better is already inside the bank: the salary arriving every month, the products held, the money that has not moved in a year. Almost none of it reaches the screen.
 
 KBC is already proactive — Kate reports personalised suggestions in more than 140 situations. Our reading is that those situations are triggers built one at a time. That works, and it does not scale: covering 2.3 million customers by hand-writing a trigger per case is a losing race.
 
-> The screens above are **our own synthetic reproduction** of today's app, built in this repository. This project contains no screenshots of the real KBC app and no real customer data.
+> Screenshot of the current app. The account holder's name and the account numbers have been removed.
 
 ---
 
@@ -65,17 +65,14 @@ It works in five steps:
 
 ## What changes when you activate it
 
-| Lucas, 24 | Monique, 66 | Claire, 38 |
-| :---: | :---: | :---: |
-| <img src="docs/assets/after-lucas.png" width="300" alt="Lucas after activation: €110 a month toward €100,000"> | <img src="docs/assets/after-monique.png" width="300" alt="Monique after activation: €40,000 sitting idle"> | <img src="docs/assets/after-claire.png" width="300" alt="Claire after activation: nothing to suggest today"> |
-| **€110/month** to reach €100,000 by 64. On his current path he is at **6%** of that goal. | **€40,000 sitting idle** above a 6-month cushion — **74%** of the balance has not moved. | **Nothing to suggest today.** No gap found, so nothing is pushed. |
+The same customer, the same data, one screen rebuilt around the single thing that is worth their attention. Open the [live demo](https://hackaton-2026-three.vercel.app/), pick a customer and press **Activate KBC Fit** to watch it happen.
 
 The benefits, concretely:
 
 - **A number instead of a slogan.** Not "think about your pension" but *€110 a month, goal reached December 2064, you are at 6% today*.
 - **A reason you can audit.** Every card lists the signals behind it. Switch one off and the recommendation changes in front of you — below **60% confidence** the card disappears entirely rather than guessing.
-- **A plan, not an advert.** A target, a horizon, a monthly amount capped at 40% of what the customer actually has left, and one next step.
-- **Consent is a switch, not a checkbox.** Turn consent off and nothing is read at all; the screen falls back to today's generic app.
+- **A plan, not a list.** A target, a horizon, a monthly amount capped at 40% of what the customer actually has left, and one next step.
+- **Consent is a switch, not a checkbox.** Turn consent off and nothing is read at all; the screen falls back to the plain inventory above.
 - **The right to say nothing.** Claire is already well covered, so KBC Fit proposes nothing and explains what it checked. An app that stays silent when it has nothing useful earns attention when it speaks.
 - **It scales.** One small stateless calculation per customer. A new case is new data and a new rule — not a new hand-built trigger.
 
