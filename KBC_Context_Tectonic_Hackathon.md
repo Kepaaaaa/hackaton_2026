@@ -32,7 +32,7 @@ An engine that:
                 BEFORE screen  +  "Activate KBC Fit" button on the left
                               │  click
                               ▼  fade
-                AFTER screen  (interactive)  +  "Behind the scenes" panel
+                AFTER screen  (interactive)  +  "What KBC Fit changes" panel
 
 /how-it-works   (the explanation page)
 /login          (last step, only if we have time, see section 7)
@@ -68,8 +68,9 @@ On click, a **fade** (View Transitions API) to the AFTER screen. The left button
 
 **Shared interactions:** signal switches (the card disappears below 60% confidence), a consent switch (nothing is read), and a button to go back to BEFORE.
 
-### "Behind the scenes" panel (right)
-Lights up step by step after activation: **read, measure the gap, decide, compose, explain**. It shows the confidence gauge with its 60% threshold.
+### Problems panel (right)
+- **BEFORE: "What's wrong with today's app".** First what this customer misses, with their own numbers (Lucas reaches only 6% of his goal and is shown a home loan). Then every problem of today's app: no personalisation, offers that don't fit, no number and no reason, data the bank already has but does not use, gaps that go unnoticed, always something to sell, no transparency or control, triggers built one by one that don't scale.
+- **AFTER: "What KBC Fit changes".** Each problem flips to its fix, one by one. The confidence score stays visible inside the phone, in "Why this goal?".
 
 ## 4. The four personas
 
@@ -156,7 +157,7 @@ If we skip login, the site is public and the data is 100% synthetic, which is fi
 ```
 src/
   app/            /, /demo/[persona], /how-it-works, (/login)
-  components/     phone Before/After, goal card, signals, behind-the-scenes, confirmation sheet
+  components/     phone Before/After, goal card, signals, problems panel, confirmation sheet
   lib/engine/     types, projection, decision, tests
   lib/data/       seed data (fallback), Firestore access
   lib/auth/       (login step) hashing, session, access control
@@ -185,7 +186,7 @@ src/
 | Time | Content |
 |---|---|
 | 0:00 to 0:20 | Pick Lucas. The BEFORE screen: the same blocks for everyone |
-| 0:20 to 0:50 | Click "Activate KBC Fit", fade, the screen recomposes, the side panel lights up. Move the slider |
+| 0:20 to 0:50 | Click "Activate KBC Fit", fade, the screen recomposes, every problem in the side panel flips to its fix. Move the slider |
 | 0:50 to 1:10 | Thomas: the situation is declared, never inferred |
 | 1:10 to 1:25 | Monique: €40,000 sitting idle, advisor appointment |
 | 1:25 to 1:45 | **Claire: "nothing to suggest"** |

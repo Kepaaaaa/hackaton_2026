@@ -24,7 +24,7 @@ src/
     brand/KbcLogo.tsx
     demo/DemoExperience.tsx        client: state (active, consent, disabled signals, monthly, rate) + transition
     demo/ActivatePanel.tsx         left column
-    demo/BehindTheScenes.tsx       right column: 5 steps + confidence gauge (60% mark)
+    demo/ProblemsPanel.tsx         right column: today's problems (BEFORE) flip to their fixes (AFTER)
     phone/PhoneFrame.tsx
     phone/BeforeScreen.tsx         today's app: accounts, payment card, 2 generic banners, tab bar
     phone/AfterScreen.tsx          greeting, chips, card by status, accounts collapsed
@@ -98,7 +98,7 @@ Monique €40,000 idle, 74%. Claire nothing to suggest.
 - `/demo/[id]`: three columns on desktop (≥1024px); stacked on small screens.
   - Left: big pill "Activate KBC Fit" + one line of explanation; becomes "Deactivate KBC Fit". Links to other personas.
   - Centre: phone. BEFORE = today's generic app. AFTER = recomposed screen.
-  - Right: "Behind the scenes": the 5 steps light up one by one (~350 ms apart) after activation; confidence gauge with 60% mark; updates live on every change.
+  - Right: problems panel. BEFORE: "What's wrong with today's app" (what this customer misses, with their numbers, then every problem). AFTER: each problem flips to its fix.
 - Transition: `document.startViewTransition` (cross-fade on the phone screen) when supported and `prefers-reduced-motion` is not set; otherwise instant.
 - AFTER shared: consent switch (off → "Nothing is read" state), signal switches, "Back to today's app" button.
 - Next step button opens a bottom sheet inside the phone: summary + "This is a simulation. Nothing is subscribed." + Close.

@@ -9,7 +9,7 @@ import { PhoneFrame } from "@/components/phone/PhoneFrame";
 import { evaluate, type Persona, type Proposal } from "@/lib/engine";
 import { eur, monthYear, pct } from "@/lib/format";
 import { ActivatePanel } from "./ActivatePanel";
-import { BehindTheScenes } from "./BehindTheScenes";
+import { ProblemsPanel } from "./ProblemsPanel";
 
 interface DemoExperienceProps {
   persona: Persona;
@@ -78,7 +78,7 @@ export function DemoExperience({ persona, personas }: DemoExperienceProps) {
       </div>
 
       <div className="lg:sticky lg:top-10">
-        <BehindTheScenes key={active ? "on" : "off"} persona={persona} rec={rec} active={active} disabledSignals={disabledSignals} />
+        <ProblemsPanel persona={persona} active={active} />
       </div>
     </div>
   );
