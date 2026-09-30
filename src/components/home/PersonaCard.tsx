@@ -3,10 +3,13 @@ import Link from "next/link";
 import { PERSONA_IMAGES } from "@/lib/data/personaImages";
 import type { Persona } from "@/lib/engine/types";
 
+// The goal label speaks to the customer ("Your child's…"); the card speaks about them.
+const aboutThem = (label: string) => label.replace(/^Your (\w)/, (_, c: string) => c.toUpperCase());
+
 function teaser(p: Persona): { label: string; tone: string } {
   switch (p.scenario.kind) {
     case "savings-goal":
-      return { label: p.scenario.goalLabel, tone: "bg-kbc-accent-100 text-kbc-accent-600" };
+      return { label: aboutThem(p.scenario.goalLabel), tone: "bg-kbc-accent-100 text-kbc-accent-600" };
     case "idle-cash":
       return { label: "Money sitting idle", tone: "bg-kbc-accent-100 text-kbc-accent-600" };
     case "none":

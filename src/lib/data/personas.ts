@@ -86,7 +86,7 @@ const PERSONAS: Record<PersonaId, Persona> = {
     ],
     scenario: {
       kind: "savings-goal",
-      goalLabel: "Your child's 18th birthday",
+      goalLabel: "Your child at 18",
       target: 20_000,
       horizonYears: 18,
       currentSavings: 2400,
