@@ -82,7 +82,7 @@ The benefits, concretely:
 |---|---|---|
 | **Lucas, 24** | First salary, renting, no pension product | €110/month toward €100,000 at 64 — at 6% today |
 | **Thomas, 31** | Just became a father — a situation he *declared himself* | A savings goal for *Your child at 18* |
-| **Monique, 66** | Retired, €54,400 on the current account | €40,000 idle above a €14,400 cushion — 74% inactive |
+| **Monique, 66** | Retired, €54,400 on the current account | €39,454 idle above a €14,946 cushion — 73% inactive |
 | **Claire, 38** | Savings invested, insurance in place | Nothing to suggest, and what was checked |
 
 ---

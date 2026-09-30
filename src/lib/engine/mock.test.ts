@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { evaluate } from "./mock";
 import type { IdleCashProposal, Recommendation, SavingsProposal } from "./types";
-import { getPersona } from "@/lib/data/personas";
+import { persona as getPersona } from "./testPersonas";
 
 const on = { consent: true, disabledSignals: [] as string[] };
 
@@ -41,22 +41,22 @@ describe("mock engine", () => {
 
   it("switching off a light signal keeps the card", () => {
     const persona = getPersona("lucas");
-    const r = evaluate(persona, { ...on, disabledSignals: ["lucas-margin"] });
+    const r = evaluate(persona, { ...on, disabledSignals: ["margin"] });
     expect(r.status).toBe("proposal");
     expect(r.confidence).toBeCloseTo(0.75);
   });
 
-  it("Monique: €40,000 idle above a €14,400 cushion, 74% inactive", () => {
+  it("Monique: about €39,450 idle above a 6-month cushion, 73% inactive", () => {
     const p = idle(evaluate(getPersona("monique"), on));
-    expect(p.idle).toBe(40_000);
-    expect(p.cushion).toBe(14_400);
-    expect(Math.round(p.inactiveShare * 100)).toBe(74);
+    expect(p.cushion).toBe(2491 * 6);
+    expect(p.idle).toBe(54_400 - 2491 * 6);
+    expect(Math.round(p.inactiveShare * 100)).toBe(73);
     expect(p.annualRate).toBe(0.01);
-    expect(p.yearlyGain).toBe(400);
+    expect(p.yearlyGain).toBe(Math.round((54_400 - 2491 * 6) * 0.01));
   });
 
   it("Monique: return slider changes the yearly scenario and is clamped", () => {
-    expect(idle(evaluate(getPersona("monique"), { ...on, annualRateOverride: 0.02 })).yearlyGain).toBe(800);
+    expect(idle(evaluate(getPersona("monique"), { ...on, annualRateOverride: 0.02 })).yearlyGain).toBe(Math.round((54_400 - 2491 * 6) * 0.02));
     expect(idle(evaluate(getPersona("monique"), { ...on, annualRateOverride: 0.5 })).annualRate).toBe(0.02);
     expect(idle(evaluate(getPersona("monique"), { ...on, annualRateOverride: -1 })).yearlyGain).toBe(0);
   });
@@ -89,7 +89,7 @@ describe("mock engine", () => {
     expect(a.reachDate).not.toBeNull();
     expect(b.reachDate! < a.reachDate!).toBe(true);
     expect(c.monthly).toBe(c.maxMonthly);
-    expect(c.maxMonthly).toBe(240);
+    expect(c.maxMonthly).toBe(260); // 40% of the €656 left each month, rounded down
     expect(d.coverage).toBeLessThan(1);
   });
 });

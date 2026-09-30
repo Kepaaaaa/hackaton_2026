@@ -26,7 +26,8 @@ export default async function DemoPage({ params }: PageProps<"/demo/[persona]">)
   const parsed = personaIdSchema.safeParse((await params).persona);
   if (!parsed.success) notFound();
 
-  const { personas: all } = await loadPersonas();
+  const data = await loadPersonas();
+  const all = data.personas;
   const persona = all.find((p) => p.id === parsed.data);
   if (!persona) notFound();
   const personas = all.map(({ id, firstName, age, tagline }) => ({ id, firstName, age, tagline }));
@@ -35,9 +36,9 @@ export default async function DemoPage({ params }: PageProps<"/demo/[persona]">)
     <>
       <SiteHeader />
       <main className="flex-1">
-        <DemoExperience key={persona.id} persona={persona} personas={personas} />
+        <DemoExperience key={persona.id} persona={persona} personas={personas} data={{ source: data.source, asOf: data.asOf }} />
       </main>
-      <SiteFooter />
+      <SiteFooter data={data} />
     </>
   );
 }

@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { PersonaAvatar } from "@/components/home/PersonaAvatar";
+import { DataSourceBadge } from "@/components/brand/DataSourceBadge";
+import type { PersonaData } from "@/lib/data/store";
 import type { Persona } from "@/lib/engine/types";
 import { SparkIcon } from "@/components/phone/icons";
 
@@ -8,9 +10,10 @@ interface ActivatePanelProps {
   personas: Pick<Persona, "id" | "firstName" | "age" | "tagline">[];
   active: boolean;
   onToggle: () => void;
+  data: Pick<PersonaData, "source" | "asOf">;
 }
 
-export function ActivatePanel({ persona, personas, active, onToggle }: ActivatePanelProps) {
+export function ActivatePanel({ persona, personas, active, onToggle, data }: ActivatePanelProps) {
   return (
     <div className="flex flex-col gap-8">
       <div>
@@ -23,6 +26,9 @@ export function ActivatePanel({ persona, personas, active, onToggle }: ActivateP
             </p>
             <p className="text-[14px] text-kbc-night-300">{persona.tagline}</p>
           </div>
+        </div>
+        <div className="mt-3">
+          <DataSourceBadge source={data.source} asOf={data.asOf} />
         </div>
       </div>
 

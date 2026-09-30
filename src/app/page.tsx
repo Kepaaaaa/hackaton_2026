@@ -14,7 +14,8 @@ const PRINCIPLES = [
 export const revalidate = 300;
 
 export default async function Home() {
-  const { personas } = await loadPersonas();
+  const data = await loadPersonas();
+  const { personas } = data;
   return (
     <>
       <SiteHeader />
@@ -62,7 +63,7 @@ export default async function Home() {
           </div>
         </section>
       </main>
-      <SiteFooter />
+      <SiteFooter data={data} />
     </>
   );
 }

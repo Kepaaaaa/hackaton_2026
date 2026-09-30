@@ -6,6 +6,7 @@ import { TabBar } from "@/components/phone/AppChrome";
 import { BeforeScreen } from "@/components/phone/BeforeScreen";
 import { NextStepSheet, type SheetContent } from "@/components/phone/NextStepSheet";
 import { PhoneFrame } from "@/components/phone/PhoneFrame";
+import type { PersonaData } from "@/lib/data/store";
 import { evaluate, type Persona, type Proposal } from "@/lib/engine";
 import { eur, monthYear, pct } from "@/lib/format";
 import { ActivatePanel } from "./ActivatePanel";
@@ -14,9 +15,10 @@ import { ProblemsPanel } from "./ProblemsPanel";
 interface DemoExperienceProps {
   persona: Persona;
   personas: Pick<Persona, "id" | "firstName" | "age" | "tagline">[];
+  data: Pick<PersonaData, "source" | "asOf">;
 }
 
-export function DemoExperience({ persona, personas }: DemoExperienceProps) {
+export function DemoExperience({ persona, personas, data }: DemoExperienceProps) {
   const [active, setActive] = useState(false);
   const [consent, setConsent] = useState(true);
   const [disabledSignals, setDisabledSignals] = useState<string[]>([]);
@@ -44,7 +46,7 @@ export function DemoExperience({ persona, personas }: DemoExperienceProps) {
   return (
     <div className="mx-auto grid max-w-[1320px] items-start gap-10 px-6 py-10 lg:grid-cols-[minmax(0,1fr)_384px_minmax(0,1fr)] lg:gap-12 lg:py-12">
       <div className="lg:sticky lg:top-10">
-        <ActivatePanel persona={persona} personas={personas} active={active} onToggle={() => setActiveWithTransition(!active)} />
+        <ActivatePanel persona={persona} personas={personas} data={data} active={active} onToggle={() => setActiveWithTransition(!active)} />
       </div>
 
       <div className="relative">

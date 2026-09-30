@@ -78,7 +78,7 @@ On click, a **fade** (View Transitions API) to the AFTER screen. The left button
 |---|---|---|---|
 | **Lucas, 24**: first salary | Stable income, €1,800 savings, no supplementary pension | About **€110/month** to reach €100,000 at 64. Without changing anything: **6%** of the goal | Start pension savings |
 | **Thomas, 31**: first child | Child just born, **told us himself**, €2,400 savings | About **€60/month** to reach €20,000 by the child's 18th birthday. Without changing anything: **21%** | Open long-term savings |
-| **Monique, 66**: retired | €54,400 on the current account, very few movements | **€40,000 sitting idle** above a €14,400 cushion (6 months). **74%** of the balance is inactive | Prepare an advisor appointment |
+| **Monique, 66**: retired | €54,400 on the current account, €2,491 spent a month | **€39,454 sitting idle** above a €14,946 cushion (6 months of her real spending). **73%** of the balance is inactive | Prepare an advisor appointment |
 | **Claire, 38**: already well covered | Savings invested, insurance in place, plan active | **Nothing to suggest today** | None |
 
 - "Meuf parfaite" is renamed **"already well covered"** on the site. Easy to change back.
@@ -103,6 +103,8 @@ otherwise                  → card composed
 
 ### What we store
 Persona data (profile, signals, accounts) lives in a database on **Google Cloud**. If we reach the login step, users and audit logs go there too.
+
+**No customer data in the code.** Each persona is built from its database record (`src/lib/engine/profile.ts`): name, age, accounts, chips, signals, the situation (child goal, retirement goal, idle cash or nothing) and every amount. The code only holds product rules (€100,000 at 64, €20,000 at 18, 3% a year, 6-month cushion, signal weights). When Firestore is unreachable, the site uses an offline snapshot of the same records and shows an "Offline snapshot" badge.
 
 ### Recommended choice: Firestore
 Firestore needs no network setup, which matters because Vercel has dynamic IP addresses. The server reads it with a service account. Cloud SQL (Postgres) is the alternative, but connecting it from Vercel takes more work. I have not checked what your hackathon Google Cloud project allows, so confirm that Firestore can be enabled there.
@@ -188,7 +190,7 @@ src/
 | 0:00 to 0:20 | Pick Lucas. The BEFORE screen: the same blocks for everyone |
 | 0:20 to 0:50 | Click "Activate KBC Fit", fade, the screen recomposes, every problem in the side panel flips to its fix. Move the slider |
 | 0:50 to 1:10 | Thomas: the situation is declared, never inferred |
-| 1:10 to 1:25 | Monique: €40,000 sitting idle, advisor appointment |
+| 1:10 to 1:25 | Monique: €39,454 sitting idle, advisor appointment |
 | 1:25 to 1:45 | **Claire: "nothing to suggest"** |
 | 1:45 to 2:05 | Switch off a signal, then consent: everything recomposes |
 | 2:05 to 2:45 | "How it works" page, scaling argument, Aikido before/after screenshot |

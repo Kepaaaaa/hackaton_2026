@@ -1,7 +1,8 @@
 import { createSign } from "node:crypto";
+import { personaFromRecord } from "@/lib/engine/profile";
 import type { Persona, PersonaId } from "@/lib/engine/types";
-import { type PersonaRecord, withDatabase } from "./fromDatabase";
-import { DATABASE_RECORDS, PERSONA_IDS, getSeedPersona } from "./personas";
+import type { PersonaRecord } from "./fromDatabase";
+import { PERSONA_IDS, SNAPSHOT } from "./personas";
 
 // Persona data from Google Cloud Firestore (collection `personas`, one document per persona, field `record`
 // holding the JSON exported from the synthetic bank database). Server-side only, service account from env.
@@ -42,7 +43,12 @@ async function accessToken(clientEmail: string, privateKey: string): Promise<str
   return token.value;
 }
 
-async function fromFirestore(): Promise<Partial<Record<PersonaId, PersonaRecord>> | null> {
+interface Remote {
+  records: Partial<Record<PersonaId, PersonaRecord>>;
+  asOf?: string;
+}
+
+async function fromFirestore(): Promise<Remote | null> {
   const c = credentials();
   if (!c) return null;
   try {
@@ -54,12 +60,16 @@ async function fromFirestore(): Promise<Partial<Record<PersonaId, PersonaRecord>
       next: { revalidate: 300 },
     });
     if (!res.ok) throw new Error(`firestore ${res.status}`);
-    const body = (await res.json()) as { documents?: { name: string; fields?: { record?: { stringValue?: string } } }[] };
-    const out: Partial<Record<PersonaId, PersonaRecord>> = {};
+    type Field = { stringValue?: string };
+    const body = (await res.json()) as { documents?: { name: string; fields?: { record?: Field; asOf?: Field } }[] };
+    const out: Remote = { records: {} };
     for (const doc of body.documents ?? []) {
       const id = doc.name.split("/").pop() as PersonaId;
       const raw = doc.fields?.record?.stringValue;
-      if ((PERSONA_IDS as readonly string[]).includes(id) && raw) out[id] = JSON.parse(raw) as PersonaRecord;
+      if ((PERSONA_IDS as readonly string[]).includes(id) && raw) {
+        out.records[id] = JSON.parse(raw) as PersonaRecord;
+        out.asOf ??= doc.fields?.asOf?.stringValue;
+      }
     }
     return out;
   } catch (err) {
@@ -68,16 +78,23 @@ async function fromFirestore(): Promise<Partial<Record<PersonaId, PersonaRecord>
   }
 }
 
-export type DataSource = "firestore" | "bundled";
+export type DataSource = "firestore" | "snapshot";
 
-export async function loadPersonas(): Promise<{ personas: Persona[]; source: DataSource }> {
-  const remote = await fromFirestore();
-  const personas = PERSONA_IDS.map((id) => withDatabase(getSeedPersona(id), remote?.[id] ?? DATABASE_RECORDS[id]));
-  const source: DataSource = remote && PERSONA_IDS.every((id) => remote[id]) ? "firestore" : "bundled";
-  return { personas, source };
+export interface PersonaData {
+  personas: Persona[];
+  /** "firestore" when every record was read live; "snapshot" when the offline copy was used. */
+  source: DataSource;
+  /** Date of the data (yyyy-mm-dd). */
+  asOf: string;
 }
 
-export async function loadPersona(id: PersonaId): Promise<Persona> {
-  const { personas } = await loadPersonas();
-  return personas.find((p) => p.id === id) ?? withDatabase(getSeedPersona(id), DATABASE_RECORDS[id]);
+export async function loadPersonas(): Promise<PersonaData> {
+  const remote = await fromFirestore();
+  const live = remote !== null && PERSONA_IDS.every((id) => remote.records[id]);
+  const records = live ? (remote.records as Record<PersonaId, PersonaRecord>) : SNAPSHOT.records;
+  return {
+    personas: PERSONA_IDS.map((id) => personaFromRecord(id, records[id])),
+    source: live ? "firestore" : "snapshot",
+    asOf: (live && remote.asOf) || SNAPSHOT.asOf,
+  };
 }
