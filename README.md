@@ -8,7 +8,7 @@ And when nothing is useful, it says so.
 
 [**→ Try the live demo**](https://hackaton-2026-theta.vercel.app/)
 
-[![Live demo](https://img.shields.io/badge/demo-live-0097DB?style=flat-square)](https://hackaton-2026-three.vercel.app/)
+[![Live demo](https://img.shields.io/badge/demo-live-0097DB?style=flat-square)](https://hackaton-2026-theta.vercel.app/)
 ![Next.js](https://img.shields.io/badge/Next.js-16-0D2A50?style=flat-square)
 ![TypeScript](https://img.shields.io/badge/TypeScript-strict-0D2A50?style=flat-square)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-v4-0D2A50?style=flat-square)
@@ -49,7 +49,7 @@ KBC is already proactive — Kate reports personalised suggestions in more than 
 
 **KBC Fit** is a decision engine that reads a customer's signals, measures a gap, and recomposes the screen around the single most useful thing — or stays quiet.
 
-**→ [hackaton-2026-three.vercel.app](https://hackaton-2026-three.vercel.app/)** — pick a customer, press *Activate KBC Fit*, and watch the same screen re-compose. Everything runs from this repository; there is nothing to install to try it.
+**→ [hackaton-2026-theta.vercel.app](https://hackaton-2026-theta.vercel.app/)** — pick a customer, press *Activate KBC Fit*, and watch the same screen re-compose. Everything runs from this repository; there is nothing to install to try it.
 
 It works in five steps:
 
@@ -65,7 +65,7 @@ It works in five steps:
 
 ## What changes when you activate it
 
-The same customer, the same data, one screen rebuilt around the single thing that is worth their attention. Open the [live demo](https://hackaton-2026-three.vercel.app/), pick a customer and press **Activate KBC Fit** to watch it happen.
+The same customer, the same data, one screen rebuilt around the single thing that is worth their attention. Open the [live demo](https://hackaton-2026-theta.vercel.app/), pick a customer and press **Activate KBC Fit** to watch it happen.
 
 The benefits, concretely:
 
