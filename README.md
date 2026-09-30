@@ -51,6 +51,8 @@ KBC is already proactive — Kate reports personalised suggestions in more than 
 
 **→ [hackaton-2026-theta.vercel.app](https://hackaton-2026-theta.vercel.app/)** — pick a customer, press *Activate KBC Fit*, and watch the same screen re-compose. Everything runs from this repository; there is nothing to install to try it.
 
+The backend is built on the [`backend`](../../tree/backend) branch — a FastAPI service with its own README explaining it.
+
 It works in five steps:
 
 | Step | What happens |
