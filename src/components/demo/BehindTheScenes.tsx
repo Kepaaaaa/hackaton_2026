@@ -27,7 +27,7 @@ export function BehindTheScenes({ persona, rec, active, disabledSignals }: Behin
 
   return (
     <aside aria-label="Behind the scenes" className="rounded-[14px] bg-white p-6 shadow-kbc">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
         <h2 className="text-[13px] font-extrabold uppercase tracking-[0.08em] text-kbc-night">Behind the scenes</h2>
         <span className={`flex items-center gap-1.5 text-[12px] font-bold ${active ? "text-kbc-accent-600" : "text-kbc-night-200"}`}>
           <span className={`size-2 rounded-full ${active ? "bg-kbc-accent" : "bg-kbc-night-100"}`} />

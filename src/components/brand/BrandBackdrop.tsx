@@ -4,7 +4,7 @@ export function BrandBackdrop() {
     <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
       <div className="absolute -top-[280px] right-[-120px] size-[640px] rounded-full bg-kbc-accent/[0.07]" />
       <svg
-        className="absolute inset-x-0 top-[250px] h-[260px] w-full text-kbc-accent/[0.06]"
+        className="absolute inset-x-0 top-[250px] bottom-0 h-[calc(100%-250px)] w-full text-kbc-accent/[0.06]"
         viewBox="0 0 1440 260"
         preserveAspectRatio="none"
       >

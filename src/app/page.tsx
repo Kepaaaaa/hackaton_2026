@@ -23,12 +23,11 @@ export default function Home() {
               <span className="size-1.5 rounded-full bg-kbc-accent" />
               KBC Fit · concept
             </p>
-            <h1 className="text-[44px] font-extrabold leading-[1.02] tracking-[-0.02em] text-kbc-night sm:text-[60px]">
+            <h1 className="text-[38px] font-extrabold leading-[1.04] tracking-[-0.02em] text-kbc-night sm:text-[60px]">
               The one thing
               <br />
               that helps.
-              <br />
-              <span className="text-kbc-accent">Or nothing at all.</span>
+              <span className="block text-balance text-kbc-accent">Or nothing at all.</span>
             </h1>
             <p className="mt-7 max-w-[34rem] text-lg leading-relaxed text-kbc-night-300">
               Today the app shows the same blocks to everyone. KBC Fit shows each customer the one useful thing, with a

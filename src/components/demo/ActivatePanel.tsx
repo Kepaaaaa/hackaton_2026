@@ -47,7 +47,7 @@ export function ActivatePanel({ persona, personas, active, onToggle }: ActivateP
         </p>
       </div>
 
-      <nav aria-label="Other customers">
+      <nav aria-label="Other customers" className="hidden lg:block">
         <p className="text-[12px] font-extrabold uppercase tracking-[0.08em] text-kbc-night-300">Switch customer</p>
         <ul className="mt-3 grid gap-1.5">
           {personas.map((p) => {

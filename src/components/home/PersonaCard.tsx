@@ -30,9 +30,9 @@ export function PersonaCard({ persona, index }: { persona: Persona; index: numbe
           <p className="text-sm text-kbc-night-300">{persona.tagline}</p>
         </div>
       </div>
-      <div className="flex items-center justify-between">
-        <span className={`rounded-kbc-sm px-2.5 py-1 text-xs font-bold ${t.tone}`}>{t.label}</span>
-        <span className="flex items-center gap-1 text-sm font-bold text-kbc-accent transition-transform duration-200 ease-(--ease-out-strong) group-hover:translate-x-0.5">
+      <div className="flex items-center justify-between gap-3">
+        <span className={`min-w-0 truncate rounded-kbc-sm px-2.5 py-1 text-xs font-bold ${t.tone}`}>{t.label}</span>
+        <span className="flex shrink-0 items-center gap-1 whitespace-nowrap text-sm font-bold text-kbc-accent transition-transform duration-200 ease-(--ease-out-strong) group-hover:translate-x-0.5">
           Open demo
           <svg viewBox="0 0 16 16" className="size-4" aria-hidden>
             <path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />

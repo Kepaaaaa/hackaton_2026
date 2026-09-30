@@ -42,7 +42,7 @@ export function DemoExperience({ persona, personas }: DemoExperienceProps) {
   const sheet = rec.status === "proposal" ? sheetFor(rec.proposal) : null;
 
   return (
-    <div className="mx-auto grid max-w-[1320px] items-start gap-10 px-6 py-10 lg:grid-cols-[minmax(260px,1fr)_auto_minmax(300px,1fr)] lg:gap-12 lg:py-12">
+    <div className="mx-auto grid max-w-[1320px] items-start gap-10 px-6 py-10 lg:grid-cols-[minmax(0,1fr)_384px_minmax(0,1fr)] lg:gap-12 lg:py-12">
       <div className="lg:sticky lg:top-10">
         <ActivatePanel persona={persona} personas={personas} active={active} onToggle={() => setActiveWithTransition(!active)} />
       </div>
