@@ -1,26 +1,190 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* KBC Design Language tokens. Source and rules: docs/kbc-brand.md */
+@theme {
+  --color-kbc-night: #0d2a50;
+  --color-kbc-night-600: #021e43;
+  --color-kbc-night-300: #45658f;
+  --color-kbc-night-200: #7394c2;
+  --color-kbc-night-150: #91b3e3;
+  --color-kbc-night-100: #bfdaff;
+  --color-kbc-night-25: #eff6ff;
+  --color-kbc-accent: #0097db;
+  --color-kbc-accent-600: #007ab1;
+  --color-kbc-accent-100: #e5f4ff;
+  --color-kbc-accent-25: #f2faff;
+  --color-kbc-surface: #f2f2f2;
+  --color-kbc-element: #f2faff;
+  --color-kbc-kate: #55c7df;
+  --color-kbc-teal: #008571;
+  --color-kbc-yellow: #e9c100;
+  --color-kbc-pink: #ee7079;
+  --color-kbc-success: #5ba215;
+  --color-kbc-success-600: #478400;
+  --color-kbc-success-25: #eeffe4;
+  --color-kbc-warning: #dc7507;
+  --color-kbc-warning-25: #fff7f1;
+  --color-kbc-error: #d64040;
+
+  --font-sans: "MuseoSans", "Museo Sans", var(--font-nunito), system-ui, sans-serif;
+
+  --radius-kbc-sm: 4px;
+  --radius-kbc: 8px;
+
+  --shadow-kbc: 0 4px 16px rgba(0, 54, 101, 0.08);
+  --shadow-kbc-raised: 0 4px 16px rgba(0, 54, 101, 0.16);
+  --shadow-phone: 0 40px 80px -24px rgba(13, 42, 80, 0.35), 0 12px 32px -12px rgba(13, 42, 80, 0.2);
+
+  --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out-strong: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+
+  --animate-rise: rise 420ms var(--ease-out-strong) both;
+  --animate-fade: fade 240ms var(--ease-out-strong) both;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+html {
+  background: var(--color-kbc-surface);
+  color: var(--color-kbc-night);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  font-feature-settings: "tnum" 0;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-kbc-accent);
+  outline-offset: 2px;
+}
+
+/* Pressable elements confirm the press */
+.press {
+  transition:
+    transform 160ms var(--ease-out-strong),
+    background-color 160ms ease,
+    color 160ms ease,
+    box-shadow 160ms ease;
+}
+.press:active {
+  transform: scale(0.97);
+}
+
+/* Range sliders in KBC style */
+.kbc-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 28px;
+  background: transparent;
+  cursor: pointer;
+  --fill: 50%;
+}
+.kbc-range::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    var(--color-kbc-accent) 0 var(--fill),
+    var(--color-kbc-night-100) var(--fill) 100%
+  );
+}
+.kbc-range::-moz-range-track {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--color-kbc-night-100);
+}
+.kbc-range::-moz-range-progress {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--color-kbc-accent);
+}
+.kbc-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  margin-top: -8px;
+  border-radius: 999px;
+  background: #fff;
+  border: 2px solid var(--color-kbc-accent);
+  box-shadow: var(--shadow-kbc-raised);
+  transition: transform 160ms var(--ease-out-strong);
+}
+.kbc-range::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: #fff;
+  border: 2px solid var(--color-kbc-accent);
+  box-shadow: var(--shadow-kbc-raised);
+}
+.kbc-range:active::-webkit-slider-thumb {
+  transform: scale(1.12);
+}
+
+/* View transition: the phone screen crossfades between BEFORE and AFTER */
+::view-transition {
+  pointer-events: none;
+}
+::view-transition-old(phone-screen) {
+  animation: 260ms var(--ease-out-strong) both vt-out;
+}
+::view-transition-new(phone-screen) {
+  animation: 420ms var(--ease-out-strong) 60ms both vt-in;
+}
+@keyframes vt-out {
+  to {
+    opacity: 0;
+    filter: blur(4px);
+    transform: scale(0.985);
+  }
+}
+@keyframes vt-in {
+  from {
+    opacity: 0;
+    filter: blur(4px);
+    transform: scale(1.015);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(*),
+  ::view-transition-new(*),
+  ::view-transition-group(*) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-delay: 0s !important;
+    transition-duration: 1ms !important;
+  }
 }

@@ -1,69 +1,66 @@
-import Image from "next/image";
+import { BrandBackdrop } from "@/components/brand/BrandBackdrop";
+import { SiteFooter } from "@/components/brand/SiteFooter";
+import { SiteHeader } from "@/components/brand/SiteHeader";
+import { PersonaCard } from "@/components/home/PersonaCard";
+import { listPersonas } from "@/lib/data/personas";
+
+const PRINCIPLES = [
+  { k: "Understand", v: "Weighted signals, read only with consent. A gap and a confidence score." },
+  { k: "Adapt", v: "The screen recomposes per customer. Switch off a signal and it changes." },
+  { k: "Scale", v: "A tiny calculation per customer, no shared state. A new case is data and a rule." },
+];
 
 export default function Home() {
+  const personas = listPersonas();
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+    <>
+      <SiteHeader />
+      <main className="relative flex-1">
+        <BrandBackdrop />
+        <section className="relative mx-auto grid max-w-[1320px] gap-14 px-6 pb-20 pt-16 lg:grid-cols-[1.05fr_1fr] lg:gap-20 lg:pt-24">
+          <div className="animate-rise">
+            <p className="mb-5 inline-flex items-center gap-2 rounded-full bg-white px-3 py-1.5 text-xs font-bold uppercase tracking-[0.08em] text-kbc-accent-600 shadow-kbc">
+              <span className="size-1.5 rounded-full bg-kbc-accent" />
+              KBC Fit · concept
+            </p>
+            <h1 className="text-[44px] font-extrabold leading-[1.02] tracking-[-0.02em] text-kbc-night sm:text-[60px]">
+              The one thing
+              <br />
+              that helps.
+              <br />
+              <span className="text-kbc-accent">Or nothing at all.</span>
+            </h1>
+            <p className="mt-7 max-w-[34rem] text-lg leading-relaxed text-kbc-night-300">
+              Today the app shows the same blocks to everyone. KBC Fit shows each customer the one useful thing, with a
+              number and a reason. When nothing is useful, it says so.
+            </p>
+            <dl className="mt-10 grid max-w-[36rem] gap-5 border-t border-kbc-night-100 pt-8 sm:grid-cols-3">
+              {PRINCIPLES.map((p) => (
+                <div key={p.k}>
+                  <dt className="text-sm font-extrabold text-kbc-night">{p.k}</dt>
+                  <dd className="mt-1.5 text-sm leading-snug text-kbc-night-300">{p.v}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+
+          <div>
+            <h2 className="mb-5 text-sm font-bold uppercase tracking-[0.08em] text-kbc-night-300 animate-fade">
+              Pick a customer
+            </h2>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {personas.map((p, i) => (
+                <PersonaCard key={p.id} persona={p} index={i} />
+              ))}
+            </div>
+            <p className="mt-5 text-sm text-kbc-night-300">
+              Each demo starts on today&apos;s app. Press <strong className="text-kbc-night">Activate KBC Fit</strong>{" "}
+              to see the same customer, understood.
+            </p>
+          </div>
+        </section>
       </main>
-    </div>
+      <SiteFooter />
+    </>
   );
 }
