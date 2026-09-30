@@ -2,7 +2,7 @@ import { BrandBackdrop } from "@/components/brand/BrandBackdrop";
 import { SiteFooter } from "@/components/brand/SiteFooter";
 import { SiteHeader } from "@/components/brand/SiteHeader";
 import { PersonaCard } from "@/components/home/PersonaCard";
-import { listPersonas } from "@/lib/data/personas";
+import { loadPersonas } from "@/lib/data/store";
 
 const PRINCIPLES = [
   { k: "Understand", v: "Weighted signals, read only with consent. A gap and a confidence score." },
@@ -10,8 +10,11 @@ const PRINCIPLES = [
   { k: "Scale", v: "A tiny calculation per customer, no shared state. A new case is data and a rule." },
 ];
 
-export default function Home() {
-  const personas = listPersonas();
+// Persona data is read from Firestore (bundled fallback) and refreshed every 5 minutes.
+export const revalidate = 300;
+
+export default async function Home() {
+  const { personas } = await loadPersonas();
   return (
     <>
       <SiteHeader />

@@ -1,7 +1,12 @@
 import { z } from "zod";
 import type { Persona, PersonaId } from "@/lib/engine/types";
+import generated from "./personas.generated.json";
+import { type PersonaRecord, withDatabase } from "./fromDatabase";
 
-// Seed data. 100% synthetic. P2 wraps this with Firestore and keeps it as the fallback.
+// Seed data. 100% synthetic. The narrative (tagline, chips, scenario) is written here; accounts, balances and
+// signal details come from the synthetic bank database (personas.generated.json, exported by
+// datasets/export_personas.py). store.ts reads the same records from Firestore and falls back to this file.
+export const DATABASE_RECORDS = generated.personas as unknown as Record<PersonaId, PersonaRecord>;
 
 export const PERSONA_IDS = ["lucas", "thomas", "monique", "claire"] as const satisfies readonly PersonaId[];
 
@@ -177,10 +182,16 @@ const PERSONAS: Record<PersonaId, Persona> = {
   },
 };
 
-export function getPersona(id: PersonaId): Persona {
+/** The persona as written in this file, before database facts are applied. */
+export function getSeedPersona(id: PersonaId): Persona {
   return PERSONAS[id];
 }
 
+/** The persona with the facts from the bundled database export. */
+export function getPersona(id: PersonaId): Persona {
+  return withDatabase(PERSONAS[id], DATABASE_RECORDS[id]);
+}
+
 export function listPersonas(): Persona[] {
-  return PERSONA_IDS.map((id) => PERSONAS[id]);
+  return PERSONA_IDS.map((id) => getPersona(id));
 }

@@ -1,0 +1,5 @@
+output/
+sample/
+__pycache__/
+*.pyc
+output_personas/

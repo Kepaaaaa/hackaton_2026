@@ -1,0 +1,406 @@
+{
+  "asOf": "2026-09-30",
+  "source": "datasets/kbcfit_data (synthetic)",
+  "personas": {
+    "lucas": {
+      "customerId": "C0000001",
+      "firstName": "Lucas",
+      "age": 24,
+      "city": "Gent",
+      "accounts": [
+        {
+          "id": "lucas-current",
+          "label": "KBC Current Account",
+          "last4": "4821",
+          "balance": 2340.0,
+          "kind": "current"
+        },
+        {
+          "id": "lucas-savings",
+          "label": "Savings Account",
+          "last4": "7730",
+          "balance": 1800.0,
+          "kind": "savings"
+        }
+      ],
+      "facts": {
+        "salary": {
+          "employer": "Noordster Consulting BV",
+          "monthsWithEmployer": 7,
+          "netMonthly": 2454.0
+        },
+        "avgMonthlyLeft": 656.0,
+        "avgMonthlySpent": 1127.0,
+        "avgMovementsPerMonth": 32.0,
+        "cushionMonths": 1.6,
+        "kbcInsurance": [],
+        "heldProducts": [
+          "current",
+          "rental_guarantee",
+          "savings"
+        ]
+      },
+      "recentTransactions": [
+        {
+          "date": "2026-09-30",
+          "label": "Aldi",
+          "amount": -43.92,
+          "category": "groceries"
+        },
+        {
+          "date": "2026-09-30",
+          "label": "Zeeman",
+          "amount": -11.21,
+          "category": "discount_store"
+        },
+        {
+          "date": "2026-09-28",
+          "label": "Colruyt",
+          "amount": -16.63,
+          "category": "groceries"
+        },
+        {
+          "date": "2026-09-28",
+          "label": "Koffiebar Bonen",
+          "amount": -16.77,
+          "category": "cafe_bar"
+        },
+        {
+          "date": "2026-09-26",
+          "label": "Jozef Cools",
+          "amount": 19.0,
+          "category": "p2p"
+        },
+        {
+          "date": "2026-09-28",
+          "label": "Koffiebar Bonen",
+          "amount": -10.26,
+          "category": "cafe_bar"
+        },
+        {
+          "date": "2026-09-28",
+          "label": "Leroy Merlin",
+          "amount": -18.64,
+          "category": "diy_garden"
+        },
+        {
+          "date": "2026-09-25",
+          "label": "Beauty Studio Lisa",
+          "amount": -28.96,
+          "category": "hair_beauty"
+        }
+      ],
+      "transactionCount": 774
+    },
+    "thomas": {
+      "customerId": "C0000002",
+      "firstName": "Thomas",
+      "age": 31,
+      "city": "Leuven",
+      "accounts": [
+        {
+          "id": "thomas-current",
+          "label": "KBC Current Account",
+          "last4": "1954",
+          "balance": 3120.0,
+          "kind": "current"
+        },
+        {
+          "id": "thomas-savings",
+          "label": "Savings Account",
+          "last4": "6602",
+          "balance": 2400.0,
+          "kind": "savings"
+        }
+      ],
+      "facts": {
+        "salary": {
+          "employer": "Brightwave Software BV",
+          "monthsWithEmployer": 24,
+          "netMonthly": 2561.0
+        },
+        "avgMonthlyLeft": 752.0,
+        "savingsOrder": {
+          "since": "2024-10",
+          "monthly": 150.0
+        },
+        "avgMonthlySpent": 2314.0,
+        "avgMovementsPerMonth": 35.0,
+        "cushionMonths": 1.0,
+        "kbcInsurance": [
+          "family_liability",
+          "home_insurance",
+          "outstanding_balance_insurance"
+        ],
+        "heldProducts": [
+          "credit_card",
+          "current",
+          "home_loan",
+          "savings"
+        ],
+        "declared": {
+          "situation": "new_child",
+          "date": "2026-09-02"
+        },
+        "childBenefitSince": "2026-06-25"
+      },
+      "recentTransactions": [
+        {
+          "date": "2026-09-30",
+          "label": "Club",
+          "amount": -3.62,
+          "category": "books_news"
+        },
+        {
+          "date": "2026-09-29",
+          "label": "Carrefour Express",
+          "amount": -59.15,
+          "category": "groceries"
+        },
+        {
+          "date": "2026-09-29",
+          "label": "DI",
+          "amount": -15.1,
+          "category": "drugstore"
+        },
+        {
+          "date": "2026-09-28",
+          "label": "Okay",
+          "amount": -134.15,
+          "category": "groceries"
+        },
+        {
+          "date": "2026-09-28",
+          "label": "Zeeman",
+          "amount": -32.58,
+          "category": "discount_store"
+        },
+        {
+          "date": "2026-09-28",
+          "label": "Carrefour Market",
+          "amount": -46.11,
+          "category": "groceries"
+        },
+        {
+          "date": "2026-09-25",
+          "label": "KBC Insurance",
+          "amount": -23.37,
+          "category": "insurance"
+        },
+        {
+          "date": "2026-09-25",
+          "label": "Brightwave Software BV",
+          "amount": 2584.72,
+          "category": "salary"
+        }
+      ],
+      "transactionCount": 979
+    },
+    "monique": {
+      "customerId": "C0000003",
+      "firstName": "Monique",
+      "age": 66,
+      "city": "Hasselt",
+      "accounts": [
+        {
+          "id": "monique-current",
+          "label": "KBC Current Account",
+          "last4": "3307",
+          "balance": 54400.0,
+          "kind": "current"
+        },
+        {
+          "id": "monique-savings",
+          "label": "Savings Account",
+          "last4": "9115",
+          "balance": 3200.0,
+          "kind": "savings"
+        }
+      ],
+      "facts": {
+        "pension": {
+          "payer": "Federale Pensioendienst",
+          "netMonthly": 2399.0
+        },
+        "avgMonthlySpent": 2491.0,
+        "avgMovementsPerMonth": 21.0,
+        "cushionMonths": 1.3,
+        "kbcInsurance": [
+          "car_insurance",
+          "family_liability",
+          "home_insurance"
+        ],
+        "heldProducts": [
+          "current",
+          "savings"
+        ]
+      },
+      "recentTransactions": [
+        {
+          "date": "2026-09-30",
+          "label": "Apotheek De Linde",
+          "amount": -21.97,
+          "category": "pharmacy"
+        },
+        {
+          "date": "2026-09-30",
+          "label": "Batopin ATM Hasselt",
+          "amount": -200.0,
+          "category": "atm"
+        },
+        {
+          "date": "2026-09-29",
+          "label": "Bio-Planet",
+          "amount": -190.8,
+          "category": "groceries"
+        },
+        {
+          "date": "2026-09-28",
+          "label": "Primark",
+          "amount": -222.58,
+          "category": "clothing"
+        },
+        {
+          "date": "2026-09-28",
+          "label": "Starbucks",
+          "amount": -35.84,
+          "category": "cafe_bar"
+        },
+        {
+          "date": "2026-09-25",
+          "label": "Bakkerij Esposito",
+          "amount": -57.52,
+          "category": "bakery"
+        },
+        {
+          "date": "2026-09-23",
+          "label": "Scarlet",
+          "amount": -81.13,
+          "category": "telecom"
+        },
+        {
+          "date": "2026-09-23",
+          "label": "JIMS",
+          "amount": -34.99,
+          "category": "gym"
+        }
+      ],
+      "transactionCount": 515
+    },
+    "claire": {
+      "customerId": "C0000004",
+      "firstName": "Claire",
+      "age": 38,
+      "city": "Mechelen",
+      "accounts": [
+        {
+          "id": "claire-current",
+          "label": "KBC Current Account",
+          "last4": "5540",
+          "balance": 4870.0,
+          "kind": "current"
+        },
+        {
+          "id": "claire-savings",
+          "label": "Savings Account",
+          "last4": "2268",
+          "balance": 18500.0,
+          "kind": "savings"
+        },
+        {
+          "id": "claire-investment",
+          "label": "Investment Portfolio",
+          "last4": "8841",
+          "balance": 32900.0,
+          "kind": "investment"
+        },
+        {
+          "id": "claire-pension",
+          "label": "Pension Savings",
+          "last4": "0417",
+          "balance": 21300.0,
+          "kind": "pension"
+        }
+      ],
+      "facts": {
+        "savingsOrder": {
+          "since": "2024-10",
+          "monthly": 270.0
+        },
+        "avgMonthlySpent": 3504.0,
+        "avgMovementsPerMonth": 32.0,
+        "cushionMonths": 5.3,
+        "investmentPlanMonthly": 100.0,
+        "kbcInsurance": [
+          "car_insurance",
+          "family_liability",
+          "home_insurance",
+          "hospitalisation",
+          "income_protection_insurance",
+          "outstanding_balance_insurance"
+        ],
+        "heldProducts": [
+          "credit_card",
+          "current",
+          "home_loan",
+          "investment_plan",
+          "long_term_savings",
+          "pension_savings",
+          "savings"
+        ],
+        "childBenefitSince": "2024-10-11"
+      },
+      "recentTransactions": [
+        {
+          "date": "2026-09-30",
+          "label": "Zara",
+          "amount": -19.92,
+          "category": "clothing"
+        },
+        {
+          "date": "2026-09-29",
+          "label": "Castel Partners NV",
+          "amount": 3110.89,
+          "category": "business_income"
+        },
+        {
+          "date": "2026-09-29",
+          "label": "Delhaize",
+          "amount": -21.19,
+          "category": "groceries"
+        },
+        {
+          "date": "2026-09-28",
+          "label": "Own long term savings account",
+          "amount": -50.0,
+          "category": "own_transfer"
+        },
+        {
+          "date": "2026-09-28",
+          "label": "Bakkerij Verhoeven",
+          "amount": -4.1,
+          "category": "bakery"
+        },
+        {
+          "date": "2026-09-28",
+          "label": "Trattoria Da Marco",
+          "amount": -29.77,
+          "category": "restaurant"
+        },
+        {
+          "date": "2026-09-28",
+          "label": "Zara",
+          "amount": -28.02,
+          "category": "clothing"
+        },
+        {
+          "date": "2026-09-23",
+          "label": "Streamz",
+          "amount": -12.95,
+          "category": "streaming"
+        }
+      ],
+      "transactionCount": 1021
+    }
+  }
+}
