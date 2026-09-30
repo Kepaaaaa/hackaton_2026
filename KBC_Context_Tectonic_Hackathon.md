@@ -145,7 +145,7 @@ If we skip login, the site is public and the data is 100% synthetic, which is fi
 | Layer | Choice |
 |---|---|
 | Framework | Next.js (App Router), React 19, strict TypeScript |
-| Styling | Tailwind CSS v4 |
+| Styling | Tailwind CSS v4, KBC Design Language tokens (see `docs/kbc-brand.md`) |
 | Database | Google Cloud Firestore (Cloud SQL as alternative) |
 | Validation | Zod on every input, including Server Actions |
 | Engine | Pure TypeScript module, no dependencies, tested with Vitest |
@@ -177,7 +177,8 @@ src/
 - No sensitive inference without customer confirmation (Julie: situation **declared**).
 - **No screenshots of the real app** in the repository, the video or Builderbase. Your before/after image shows a real name and real IBANs.
 - Public repository, README in English (project, how to run it, what is unfinished).
-- No logos or proprietary text. Add the mention "hackathon concept, not affiliated".
+- KBC branding is allowed (we work with KBC on this challenge): official KBC logo and KBC Design Language (KDL) tokens, see `docs/kbc-brand.md`. Add the mention "Built for the KBC challenge at Tectonic Hackathon".
+- The KBC font (Museo Sans) is commercial: never commit the font files. Use it only if installed locally, with Nunito Sans as fallback.
 
 ## 11. Video script (under 3 minutes, narrated in English)
 
