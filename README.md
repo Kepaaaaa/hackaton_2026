@@ -25,10 +25,10 @@ And when nothing is useful, it says so.
 Here is the home screen of the banking app as it is today.
 
 <div align="center">
-<img src="docs/assets/todays-app.png" width="330" alt="Today's banking app: a list of accounts and payment cards, and nothing else">
+<img src="docs/assets/todays-app.png" width="330" alt="Today's banking app, recreated with synthetic data: accounts, a card, and a generic home loan banner">
 </div>
 
-It is an **inventory**. Three accounts, two debit cards, the balances. It tells the customer *what they have*, and stops there.
+It is an **inventory**. The accounts, a card, the balances, and a home loan banner that every customer sees. It tells the customer *what they have*, and stops there.
 
 What it never tells them is what any of it means:
 
@@ -41,7 +41,7 @@ The information needed to do better is already inside the bank: the salary arriv
 
 KBC is already proactive — Kate reports personalised suggestions in more than 140 situations. Our reading is that those situations are triggers built one at a time. That works, and it does not scale: covering 2.3 million customers by hand-writing a trigger per case is a losing race.
 
-> Screenshot of the current app. The account holder's name and the account numbers have been removed.
+> Today's app layout, recreated in our demo with synthetic data (Lucas, 24). No screenshot of the real app and no real customer data are used in this project.
 
 ---
 
