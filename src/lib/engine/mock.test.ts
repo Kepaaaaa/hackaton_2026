@@ -24,14 +24,14 @@ describe("mock engine", () => {
     expect(p.coverage).toBe(1);
   });
 
-  it("Julie: about €60/month, 21% if nothing changes", () => {
-    const p = savings(evaluate(getPersona("julie"), on));
+  it("Thomas: about €60/month, 21% if nothing changes", () => {
+    const p = savings(evaluate(getPersona("thomas"), on));
     expect(p.recommendedMonthly).toBe(60);
     expect(Math.round(p.coverageIfNothing * 100)).toBe(21);
   });
 
-  it("Julie: switching off the declared situation hides the card", () => {
-    const persona = getPersona("julie");
+  it("Thomas: switching off the declared situation hides the card", () => {
+    const persona = getPersona("thomas");
     const declared = persona.signals.find((s) => s.source === "declared");
     expect(declared).toBeDefined();
     const r = evaluate(persona, { ...on, disabledSignals: [declared!.id] });
@@ -46,8 +46,8 @@ describe("mock engine", () => {
     expect(r.confidence).toBeCloseTo(0.75);
   });
 
-  it("Marc: €40,000 idle above a €14,400 cushion, 74% inactive", () => {
-    const p = idle(evaluate(getPersona("marc"), on));
+  it("Monique: €40,000 idle above a €14,400 cushion, 74% inactive", () => {
+    const p = idle(evaluate(getPersona("monique"), on));
     expect(p.idle).toBe(40_000);
     expect(p.cushion).toBe(14_400);
     expect(Math.round(p.inactiveShare * 100)).toBe(74);
@@ -55,10 +55,10 @@ describe("mock engine", () => {
     expect(p.yearlyGain).toBe(400);
   });
 
-  it("Marc: return slider changes the yearly scenario and is clamped", () => {
-    expect(idle(evaluate(getPersona("marc"), { ...on, annualRateOverride: 0.02 })).yearlyGain).toBe(800);
-    expect(idle(evaluate(getPersona("marc"), { ...on, annualRateOverride: 0.5 })).annualRate).toBe(0.02);
-    expect(idle(evaluate(getPersona("marc"), { ...on, annualRateOverride: -1 })).yearlyGain).toBe(0);
+  it("Monique: return slider changes the yearly scenario and is clamped", () => {
+    expect(idle(evaluate(getPersona("monique"), { ...on, annualRateOverride: 0.02 })).yearlyGain).toBe(800);
+    expect(idle(evaluate(getPersona("monique"), { ...on, annualRateOverride: 0.5 })).annualRate).toBe(0.02);
+    expect(idle(evaluate(getPersona("monique"), { ...on, annualRateOverride: -1 })).yearlyGain).toBe(0);
   });
 
   it("Claire: nothing to suggest, with the list of checks", () => {
@@ -76,7 +76,7 @@ describe("mock engine", () => {
   });
 
   it("always returns the five steps in order", () => {
-    const r = evaluate(getPersona("marc"), on);
+    const r = evaluate(getPersona("monique"), on);
     expect(r.steps.map((s) => s.id)).toEqual(["read", "measure", "decide", "compose", "explain"]);
   });
 

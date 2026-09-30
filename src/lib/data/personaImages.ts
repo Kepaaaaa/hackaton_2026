@@ -27,18 +27,18 @@ export const PERSONA_IMAGES: Record<PersonaId, PersonaImage> = {
     face: "/personas/lucas-face.webp",
     tint: "#e5f4ff",
   },
-  julie: {
-    figure: "/personas/julie.webp",
+  thomas: {
+    figure: "/personas/thomas.webp",
     figureWidth: 211,
     figureHeight: 640,
-    face: "/personas/julie-face.webp",
+    face: "/personas/thomas-face.webp",
     tint: "#fdecee",
   },
-  marc: {
-    figure: "/personas/marc.webp",
+  monique: {
+    figure: "/personas/monique.webp",
     figureWidth: 244,
     figureHeight: 640,
-    face: "/personas/marc-face.webp",
+    face: "/personas/monique-face.webp",
     tint: "#e6f4f1",
   },
   claire: {

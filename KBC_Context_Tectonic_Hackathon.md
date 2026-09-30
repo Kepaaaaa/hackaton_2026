@@ -41,7 +41,7 @@ An engine that:
 All text on the site and in the documentation is in **English**.
 
 ### Step 1: pick a persona (`/`)
-Four cards: Lucas, Julie, Marc, Claire. One click opens that persona's demo.
+Four cards: Lucas, Thomas, Monique, Claire. One click opens that persona's demo.
 
 ### Step 2: BEFORE screen (`/demo/[persona]`)
 - **Centre:** a phone showing the app **as it is today**: the persona's accounts, a payment method, two generic banners (loan, insurance) and the navigation bar. All accounts are **fictional**.
@@ -62,8 +62,8 @@ On click, a **fade** (View Transitions API) to the AFTER screen. The left button
 | Persona | What you can play with |
 |---|---|
 | **Lucas** | Monthly amount slider: the target date and coverage update live |
-| **Julie** | Monthly amount slider. Switch off "situation you told us about": the proposal disappears |
-| **Marc** | Return slider from 0% to 2%: the yearly scenario changes. "Prepare my appointment" button |
+| **Thomas** | Monthly amount slider. Switch off "situation you told us about": the proposal disappears |
+| **Monique** | Return slider from 0% to 2%: the yearly scenario changes. "Prepare my appointment" button |
 | **Claire** | "See what we checked": an expandable list. No action proposed |
 
 **Shared interactions:** signal switches (the card disappears below 60% confidence), a consent switch (nothing is read), and a button to go back to BEFORE.
@@ -76,13 +76,13 @@ Lights up step by step after activation: **read, measure the gap, decide, compos
 | Persona | Situation | What AFTER shows | Next step |
 |---|---|---|---|
 | **Lucas, 24**: first salary | Stable income, €1,800 savings, no supplementary pension | About **€110/month** to reach €100,000 at 64. Without changing anything: **6%** of the goal | Start pension savings |
-| **Julie, 31**: first child | Expecting a child, **told us herself**, €2,400 savings | About **€60/month** to reach €20,000 by the child's 18th birthday. Without changing anything: **21%** | Open long-term savings |
-| **Marc, 66**: retired | €54,400 on the current account, very few movements | **€40,000 sitting idle** above a €14,400 cushion (6 months). **74%** of the balance is inactive | Prepare an advisor appointment |
+| **Thomas, 31**: first child | Child just born, **told us himself**, €2,400 savings | About **€60/month** to reach €20,000 by the child's 18th birthday. Without changing anything: **21%** | Open long-term savings |
+| **Monique, 66**: retired | €54,400 on the current account, very few movements | **€40,000 sitting idle** above a €14,400 cushion (6 months). **74%** of the balance is inactive | Prepare an advisor appointment |
 | **Claire, 38**: already well covered | Savings invested, insurance in place, plan active | **Nothing to suggest today** | None |
 
 - "Meuf parfaite" is renamed **"already well covered"** on the site. Easy to change back.
 - Amounts use **3% a year, an illustrative assumption, not guaranteed**. These are not KBC rates.
-- Lucas and Julie get an amount capped at 40% of their monthly margin.
+- Lucas and Thomas get an amount capped at 40% of their monthly margin.
 
 ## 5. The engine (rules)
 
@@ -174,7 +174,7 @@ src/
 ## 10. Rules to respect
 
 - Amounts are simulator assumptions. Products are generic categories. Any investment goes through an advisor.
-- No sensitive inference without customer confirmation (Julie: situation **declared**).
+- No sensitive inference without customer confirmation (Thomas: situation **declared**).
 - **No screenshots of the real app** in the repository, the video or Builderbase. Your before/after image shows a real name and real IBANs.
 - Public repository, README in English (project, how to run it, what is unfinished).
 - KBC branding is allowed (we work with KBC on this challenge): official KBC logo and KBC Design Language (KDL) tokens, see `docs/kbc-brand.md`. Add the mention "Built for the KBC challenge at Tectonic Hackathon".
@@ -186,8 +186,8 @@ src/
 |---|---|
 | 0:00 to 0:20 | Pick Lucas. The BEFORE screen: the same blocks for everyone |
 | 0:20 to 0:50 | Click "Activate KBC Fit", fade, the screen recomposes, the side panel lights up. Move the slider |
-| 0:50 to 1:10 | Julie: the situation is declared, never inferred |
-| 1:10 to 1:25 | Marc: €40,000 sitting idle, advisor appointment |
+| 0:50 to 1:10 | Thomas: the situation is declared, never inferred |
+| 1:10 to 1:25 | Monique: €40,000 sitting idle, advisor appointment |
 | 1:25 to 1:45 | **Claire: "nothing to suggest"** |
 | 1:45 to 2:05 | Switch off a signal, then consent: everything recomposes |
 | 2:05 to 2:45 | "How it works" page, scaling argument, Aikido before/after screenshot |

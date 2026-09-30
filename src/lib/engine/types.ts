@@ -9,7 +9,7 @@ export const IDLE_RATE_MIN = 0;
 export const IDLE_RATE_MAX = 0.02;
 export const IDLE_RATE_DEFAULT = 0.01;
 
-export type PersonaId = "lucas" | "julie" | "marc" | "claire";
+export type PersonaId = "lucas" | "thomas" | "monique" | "claire";
 
 export type SignalSource = "transactions" | "products" | "declared";
 

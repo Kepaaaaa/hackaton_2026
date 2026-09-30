@@ -15,8 +15,8 @@ const OUT = "public/personas";
 
 const files = {
   lucas:  "Image ChatGPT 30 sept. 2026, 20_45_45.png",
-  julie:  "Image ChatGPT 30 sept. 2026, 20_45_37.png",
-  marc:   "Image ChatGPT 30 sept. 2026, 20_45_29.png",
+  thomas:  "Image ChatGPT 30 sept. 2026, 20_45_37.png",
+  monique:   "Image ChatGPT 30 sept. 2026, 20_45_29.png",
   claire: "Image ChatGPT 30 sept. 2026, 20_45_14.png",
 };
 

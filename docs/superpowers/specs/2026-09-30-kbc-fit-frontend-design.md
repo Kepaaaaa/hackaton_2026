@@ -28,8 +28,8 @@ src/
     phone/PhoneFrame.tsx
     phone/BeforeScreen.tsx         today's app: accounts, payment card, 2 generic banners, tab bar
     phone/AfterScreen.tsx          greeting, chips, card by status, accounts collapsed
-    phone/GoalCard.tsx             ring + monthly slider (Lucas, Julie)
-    phone/IdleCashCard.tsx         idle amount + return slider 0-2% (Marc)
+    phone/GoalCard.tsx             ring + monthly slider (Lucas, Thomas)
+    phone/IdleCashCard.tsx         idle amount + return slider 0-2% (Monique)
     phone/NothingCard.tsx          "nothing to suggest" + "See what we checked" (Claire)
     phone/WhyThisGoal.tsx          signals, one switch each
     phone/ConsentToggle.tsx
@@ -46,7 +46,7 @@ src/
 ## 2. Frozen contract (`lib/engine/types.ts`)
 
 ```ts
-type PersonaId = "lucas" | "julie" | "marc" | "claire";
+type PersonaId = "lucas" | "thomas" | "monique" | "claire";
 type SignalSource = "transactions" | "products" | "declared";
 interface Signal { id: string; label: string; detail: string; source: SignalSource; weight: number }
 interface Account { id: string; label: string; last4: string; balance: number; kind: "current" | "savings" | "investment" | "pension" }
@@ -89,8 +89,8 @@ Constants: `THRESHOLD = 0.6`, `ANNUAL_RATE = 0.03`, `MARGIN_CAP = 0.4`, rounding
 - Idle cash: `cushion = expenses × 6`, `idle = max(0, balance − cushion)`, `inactiveShare = idle / balance`,
   `yearlyGain = idle × rate` (rate slider 0–2%, default 1%).
 
-Expected: Lucas €110, 6%. Julie €60, 21%, and switching off the declared signal (0.45) hides the card.
-Marc €40,000 idle, 74%. Claire nothing to suggest.
+Expected: Lucas €110, 6%. Thomas €60, 21%, and switching off the declared signal (0.45) hides the card.
+Monique €40,000 idle, 74%. Claire nothing to suggest.
 
 ## 4. Screens and interactions
 

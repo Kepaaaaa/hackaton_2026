@@ -4,8 +4,8 @@ import type { PersonaId } from "@/lib/engine/types";
 
 const TONES: Record<PersonaId, string> = {
   lucas: "bg-kbc-accent-100 text-kbc-accent-600",
-  julie: "bg-[#fdecee] text-[#a32a3b]",
-  marc: "bg-[#e6f4f1] text-kbc-teal",
+  thomas: "bg-[#fdecee] text-[#a32a3b]",
+  monique: "bg-[#e6f4f1] text-kbc-teal",
   claire: "bg-[#fff7d6] text-[#776100]",
 };
 

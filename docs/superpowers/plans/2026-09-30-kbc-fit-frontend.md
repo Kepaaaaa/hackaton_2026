@@ -29,8 +29,8 @@ Spec: `docs/superpowers/specs/2026-09-30-kbc-fit-frontend-design.md`. Brand: `do
 - [ ] `types.ts`: exactly the contract in spec section 2 plus constants `THRESHOLD`, `ANNUAL_RATE`, `MARGIN_CAP`, `CUSHION_MONTHS`.
 - [ ] `personas.ts`: the four personas. Figures:
   - Lucas 24: savings-goal, target 100000, horizon 40, currentSavings 1800, monthlyMargin 600. Signals: salary (transactions, 0.30), no pension product (products, 0.45), stable job (transactions, 0.25).
-  - Julie 31: savings-goal, target 20000, horizon 18, currentSavings 2400, monthlyMargin 400. Signals: savings pattern (transactions, 0.30), expecting a child (declared, 0.45), no long-term product (products, 0.25).
-  - Marc 66: idle-cash, balance 54400, monthlyExpenses 2400, cushionMonths 6. Signals: large balance (products, 0.30), few movements (transactions, 0.45), pension income (transactions, 0.25).
+  - Thomas 31: savings-goal, target 20000, horizon 18, currentSavings 2400, monthlyMargin 400. Signals: savings pattern (transactions, 0.30), expecting a child (declared, 0.45), no long-term product (products, 0.25).
+  - Monique 66: idle-cash, balance 54400, monthlyExpenses 2400, cushionMonths 6. Signals: large balance (products, 0.30), few movements (transactions, 0.45), pension income (transactions, 0.25).
   - Claire 38: none, with checks (savings invested, insurance in place, pension plan active, emergency cushion ok). Signals weights 0.30/0.45/0.25.
   - `getPersona(id)`, `PERSONA_IDS`, `personaIdSchema` (Zod enum).
 - [ ] Verify: `npx tsc --noEmit`. Commit.
@@ -56,26 +56,26 @@ describe("mock engine", () => {
     expect(r.proposal.recommendedMonthly).toBe(110);
     expect(Math.round(r.proposal.coverageIfNothing * 100)).toBe(6);
   });
-  it("Julie: about €60/month, 21%", () => {
-    const r = evaluate(getPersona("julie"), on);
+  it("Thomas: about €60/month, 21%", () => {
+    const r = evaluate(getPersona("thomas"), on);
     if (r.status !== "proposal" || r.proposal.kind !== "savings-goal") throw new Error();
     expect(r.proposal.recommendedMonthly).toBe(60);
     expect(Math.round(r.proposal.coverageIfNothing * 100)).toBe(21);
   });
-  it("Julie: switching off the declared situation hides the card", () => {
-    const p = getPersona("julie");
+  it("Thomas: switching off the declared situation hides the card", () => {
+    const p = getPersona("thomas");
     const declared = p.signals.find((s) => s.source === "declared")!;
     expect(evaluate(p, { ...on, disabledSignals: [declared.id] }).status).toBe("low-confidence");
   });
-  it("Marc: €40,000 idle, 74% inactive", () => {
-    const r = evaluate(getPersona("marc"), on);
+  it("Monique: €40,000 idle, 74% inactive", () => {
+    const r = evaluate(getPersona("monique"), on);
     if (r.status !== "proposal" || r.proposal.kind !== "idle-cash") throw new Error();
     expect(r.proposal.idle).toBe(40000);
     expect(r.proposal.cushion).toBe(14400);
     expect(Math.round(r.proposal.inactiveShare * 100)).toBe(74);
   });
-  it("Marc: return slider changes the yearly scenario", () => {
-    const r = evaluate(getPersona("marc"), { ...on, annualRateOverride: 0.02 });
+  it("Monique: return slider changes the yearly scenario", () => {
+    const r = evaluate(getPersona("monique"), { ...on, annualRateOverride: 0.02 });
     if (r.status !== "proposal" || r.proposal.kind !== "idle-cash") throw new Error();
     expect(r.proposal.yearlyGain).toBe(800);
   });
@@ -151,5 +151,5 @@ describe("mock engine", () => {
 ### Task 9: Verification
 
 - [ ] `npx tsc --noEmit && npm run lint && npm test && npm run build`.
-- [ ] Playwright: open each persona at 1440×900 and 390×844, activate, screenshot; Lucas slider; Julie declared switch; Marc rate; Claire expand; consent off. Check no console errors.
+- [ ] Playwright: open each persona at 1440×900 and 390×844, activate, screenshot; Lucas slider; Thomas declared switch; Monique rate; Claire expand; consent off. Check no console errors.
 - [ ] Fix issues, commit.

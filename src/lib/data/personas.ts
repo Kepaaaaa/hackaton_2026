@@ -3,7 +3,7 @@ import type { Persona, PersonaId } from "@/lib/engine/types";
 
 // Seed data. 100% synthetic. P2 wraps this with Firestore and keeps it as the fallback.
 
-export const PERSONA_IDS = ["lucas", "julie", "marc", "claire"] as const satisfies readonly PersonaId[];
+export const PERSONA_IDS = ["lucas", "thomas", "monique", "claire"] as const satisfies readonly PersonaId[];
 
 export const personaIdSchema = z.enum(PERSONA_IDS);
 
@@ -51,33 +51,33 @@ const PERSONAS: Record<PersonaId, Persona> = {
       product: "pension savings",
     },
   },
-  julie: {
-    id: "julie",
-    firstName: "Julie",
+  thomas: {
+    id: "thomas",
+    firstName: "Thomas",
     age: 31,
-    tagline: "Expecting her first child",
-    chips: ["31 years old", "Employee", "Expecting a child", "Homeowner"],
+    tagline: "Just became a father",
+    chips: ["31 years old", "Employee", "New parent", "Homeowner"],
     accounts: [
-      { id: "julie-current", label: "KBC Current Account", last4: "1954", balance: 3120, kind: "current" },
-      { id: "julie-savings", label: "Savings Account", last4: "6602", balance: 2400, kind: "savings" },
+      { id: "thomas-current", label: "KBC Current Account", last4: "1954", balance: 3120, kind: "current" },
+      { id: "thomas-savings", label: "Savings Account", last4: "6602", balance: 2400, kind: "savings" },
     ],
     signals: [
       {
-        id: "julie-saves",
+        id: "thomas-saves",
         label: "You already save every month",
         detail: "A monthly transfer to savings since 2024",
         source: "transactions",
         weight: 0.3,
       },
       {
-        id: "julie-declared-child",
+        id: "thomas-declared-child",
         label: "Situation you told us about",
-        detail: "You told us you are expecting a child",
+        detail: "You told us your first child was just born",
         source: "declared",
         weight: 0.45,
       },
       {
-        id: "julie-no-long-term",
+        id: "thomas-no-long-term",
         label: "No long-term savings",
         detail: "Only a savings account, nothing for 10+ years",
         source: "products",
@@ -94,33 +94,33 @@ const PERSONAS: Record<PersonaId, Persona> = {
       product: "long-term savings",
     },
   },
-  marc: {
-    id: "marc",
-    firstName: "Marc",
+  monique: {
+    id: "monique",
+    firstName: "Monique",
     age: 66,
     tagline: "Retired, cash sitting idle",
     chips: ["66 years old", "Retired", "Pension income", "Homeowner"],
     accounts: [
-      { id: "marc-current", label: "KBC Current Account", last4: "3307", balance: 54_400, kind: "current" },
-      { id: "marc-savings", label: "Savings Account", last4: "9115", balance: 3200, kind: "savings" },
+      { id: "monique-current", label: "KBC Current Account", last4: "3307", balance: 54_400, kind: "current" },
+      { id: "monique-savings", label: "Savings Account", last4: "9115", balance: 3200, kind: "savings" },
     ],
     signals: [
       {
-        id: "marc-balance",
+        id: "monique-balance",
         label: "High balance on the current account",
         detail: "€54,400, far above monthly spending",
         source: "products",
         weight: 0.3,
       },
       {
-        id: "marc-few-movements",
+        id: "monique-few-movements",
         label: "Very few movements",
         detail: "About €2,400 spent a month, stable for 2 years",
         source: "transactions",
         weight: 0.45,
       },
       {
-        id: "marc-pension",
+        id: "monique-pension",
         label: "Regular pension income",
         detail: "Pension paid every month",
         source: "transactions",
