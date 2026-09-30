@@ -25,10 +25,10 @@ And when nothing is useful, it says so.
 Here is the home screen of the banking app as it is today.
 
 <div align="center">
-<img src="docs/assets/todays-app.png" width="330" alt="Today's banking app, recreated with synthetic data: accounts, a card, and a generic home loan banner">
+<img src="docs/assets/todays-app.png" width="330" alt="Today's banking app: a list of accounts and payment cards, and nothing else">
 </div>
 
-It is an **inventory**. The accounts, a card, the balances, and a home loan banner that every customer sees. It tells the customer *what they have*, and stops there.
+It is an **inventory**. Three accounts, two debit cards, the balances. It tells the customer *what they have*, and stops there.
 
 What it never tells them is what any of it means:
 
@@ -41,7 +41,7 @@ The information needed to do better is already inside the bank: the salary arriv
 
 KBC is already proactive — Kate reports personalised suggestions in more than 140 situations. Our reading is that those situations are triggers built one at a time. That works, and it does not scale: covering 2.3 million customers by hand-writing a trigger per case is a losing race.
 
-> Today's app layout, recreated in our demo with synthetic data (Lucas, 24). No screenshot of the real app and no real customer data are used in this project.
+> Screenshot of the current app, relabelled from CBC to KBC — the same group's French-speaking Belgian brand, and the same screen. The account holder's name, the account numbers and the card numbers have been removed.
 
 ---
 
@@ -82,7 +82,7 @@ The benefits, concretely:
 |---|---|---|
 | **Lucas, 24** | First salary, renting, no pension product | €110/month toward €100,000 at 64 — at 6% today |
 | **Thomas, 31** | Just became a father — a situation he *declared himself* | A savings goal for *Your child at 18* |
-| **Monique, 66** | Retired, €54,400 on the current account | €39,454 idle above a €14,946 cushion — 73% inactive |
+| **Monique, 66** | Retired, €54,400 on the current account | €40,000 idle above a €14,400 cushion — 74% inactive |
 | **Claire, 38** | Savings invested, insurance in place | Nothing to suggest, and what was checked |
 
 ---
