@@ -1,3 +1,5 @@
+import Image from "next/image";
+import { PERSONA_IMAGES } from "@/lib/data/personaImages";
 import type { PersonaId } from "@/lib/engine/types";
 
 const TONES: Record<PersonaId, string> = {
@@ -7,11 +9,36 @@ const TONES: Record<PersonaId, string> = {
   claire: "bg-[#fff7d6] text-[#776100]",
 };
 
-export function PersonaAvatar({ id, name, size = "md" }: { id: PersonaId; name: string; size?: "sm" | "md" | "lg" }) {
-  const dims = size === "lg" ? "size-14 text-xl" : size === "sm" ? "size-9 text-sm" : "size-12 text-lg";
+const SIZES: Record<"sm" | "md" | "lg", { box: string; px: string }> = {
+  sm: { box: "size-9 text-sm", px: "36px" },
+  md: { box: "size-12 text-lg", px: "48px" },
+  lg: { box: "size-14 text-xl", px: "56px" },
+};
+
+export function PersonaAvatar({
+  id,
+  name,
+  size = "md",
+}: {
+  id: PersonaId;
+  name: string;
+  size?: "sm" | "md" | "lg";
+}) {
+  const { box, px } = SIZES[size];
   return (
-    <span aria-hidden className={`inline-grid shrink-0 place-items-center rounded-full font-extrabold ${dims} ${TONES[id]}`}>
+    <span
+      aria-hidden
+      className={`relative inline-grid shrink-0 place-items-center overflow-hidden rounded-full font-extrabold ${box} ${TONES[id]}`}
+    >
+      {/* The initial shows through if the portrait ever fails to load. */}
       {name.charAt(0)}
+      <Image
+        src={PERSONA_IMAGES[id].face}
+        alt=""
+        fill
+        sizes={px}
+        className="object-cover"
+      />
     </span>
   );
 }
