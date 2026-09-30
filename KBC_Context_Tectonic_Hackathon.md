@@ -1,3 +1,5 @@
+> Superseded by KBC Context, see BACKEND_TASKS.md; personas and some figures are kept.
+
 # KBC Fit: MVP and Presentation
 
 > **Today the app shows the same blocks to everyone. KBC Fit shows each customer the one thing that is useful to them, with a number and a reason. When nothing is useful, it says so.**
