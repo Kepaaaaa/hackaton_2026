@@ -6,7 +6,7 @@
 KBC Fit shows each customer the one thing that is useful to them — with a number and a reason.<br>
 And when nothing is useful, it says so.
 
-[**→ Try the live demo**](https://hackaton-2026-three.vercel.app/)
+[**→ Try the live demo**](https://hackaton-2026-theta.vercel.app/)
 
 [![Live demo](https://img.shields.io/badge/demo-live-0097DB?style=flat-square)](https://hackaton-2026-three.vercel.app/)
 ![Next.js](https://img.shields.io/badge/Next.js-16-0D2A50?style=flat-square)
