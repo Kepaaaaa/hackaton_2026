@@ -1,0 +1,549 @@
+{
+  "format": 1,
+  "version": "20260930-193354-synthetic-3k",
+  "trained_at": "2026-09-30T19:33:54+00:00",
+  "source": "synthetic-3k",
+  "customers": 3000,
+  "snapshots": [
+    "2026-09-30",
+    "2026-07-01",
+    "2026-04-01",
+    "2025-12-31"
+  ],
+  "threshold": 0.6,
+  "min_support": 20,
+  "events": {
+    "birth": {
+      "label": "A baby on the way or just born",
+      "sensitive": true,
+      "positives": 237,
+      "rows": 12000,
+      "test": {
+        "positives": 51,
+        "rows": 2332,
+        "learned": {
+          "auc": 0.865,
+          "precision": 0.958,
+          "recall": 0.451,
+          "shown": 24,
+          "brier": 0.0109,
+          "black_box_auc": 0.865
+        },
+        "expert_priors": {
+          "auc": 0.866,
+          "precision": 0.938,
+          "recall": 0.588,
+          "shown": 32,
+          "brier": 0.0137
+        }
+      },
+      "trained": true,
+      "weights": {
+        "declared": 0.64,
+        "baby_purchases": 0.16,
+        "child_benefit_started": 0.32,
+        "childcare_started": 0.3,
+        "photo_prints": 0.05,
+        "baby_pages": 0.04,
+        "child_savings_pages": 0.12
+      },
+      "priors": {
+        "declared": 0.5,
+        "baby_purchases": 0.3,
+        "child_benefit_started": 0.4,
+        "childcare_started": 0.3,
+        "photo_prints": 0.05,
+        "baby_pages": 0.2,
+        "child_savings_pages": 0.1
+      },
+      "support": {
+        "declared": 68,
+        "baby_purchases": 293,
+        "child_benefit_started": 34,
+        "childcare_started": 18,
+        "photo_prints": 16,
+        "baby_pages": 1062,
+        "child_savings_pages": 422
+      }
+    },
+    "home_purchase": {
+      "label": "Buying a home",
+      "sensitive": false,
+      "positives": 80,
+      "rows": 12000,
+      "test": {
+        "positives": 21,
+        "rows": 2332,
+        "learned": {
+          "auc": 0.779,
+          "precision": 0.833,
+          "recall": 0.238,
+          "shown": 6,
+          "brier": 0.0061,
+          "black_box_auc": 0.768
+        },
+        "expert_priors": {
+          "auc": 0.791,
+          "precision": 0.818,
+          "recall": 0.429,
+          "shown": 11,
+          "brier": 0.0095
+        }
+      },
+      "trained": true,
+      "weights": {
+        "declared": 0.15,
+        "notary_payment": 0.59,
+        "rent_stopped": 0.0,
+        "moving_company": 0.0,
+        "furnishing_spike": 0.0,
+        "home_loan_pages": 0.0,
+        "home_loan_simulator": 0.06
+      },
+      "priors": {
+        "declared": 0.5,
+        "notary_payment": 0.45,
+        "rent_stopped": 0.2,
+        "moving_company": 0.15,
+        "furnishing_spike": 0.15,
+        "home_loan_pages": 0.15,
+        "home_loan_simulator": 0.25
+      },
+      "support": {
+        "declared": 20,
+        "notary_payment": 65,
+        "rent_stopped": 30,
+        "moving_company": 21,
+        "furnishing_spike": 135,
+        "home_loan_pages": 872,
+        "home_loan_simulator": 316
+      }
+    },
+    "car_purchase": {
+      "label": "Buying a car",
+      "sensitive": false,
+      "positives": 144,
+      "rows": 12000,
+      "test": {
+        "positives": 29,
+        "rows": 2332,
+        "learned": {
+          "auc": 0.799,
+          "precision": 0.833,
+          "recall": 0.345,
+          "shown": 12,
+          "brier": 0.0088,
+          "black_box_auc": 0.833
+        },
+        "expert_priors": {
+          "auc": 0.764,
+          "precision": 0.833,
+          "recall": 0.345,
+          "shown": 12,
+          "brier": 0.0153
+        }
+      },
+      "trained": true,
+      "weights": {
+        "car_dealer_payment": 0.58,
+        "fuel_started": 0.0,
+        "car_loan_pages": 0.0,
+        "car_loan_simulator": 0.11
+      },
+      "priors": {
+        "car_dealer_payment": 0.55,
+        "fuel_started": 0.2,
+        "car_loan_pages": 0.15,
+        "car_loan_simulator": 0.2
+      },
+      "support": {
+        "car_dealer_payment": 93,
+        "fuel_started": 20,
+        "car_loan_pages": 2841,
+        "car_loan_simulator": 460
+      }
+    },
+    "first_job": {
+      "label": "First job",
+      "sensitive": false,
+      "positives": 45,
+      "rows": 12000,
+      "test": {
+        "positives": 11,
+        "rows": 2332,
+        "learned": {
+          "auc": 0.817,
+          "precision": 0.7,
+          "recall": 0.636,
+          "shown": 10,
+          "brier": 0.0025,
+          "black_box_auc": 0.181
+        },
+        "expert_priors": {
+          "auc": 0.816,
+          "precision": null,
+          "recall": 0.0,
+          "shown": 0,
+          "brier": 0.0034
+        }
+      },
+      "trained": true,
+      "weights": {
+        "salary_started": 0.55,
+        "new_employer": 0.09,
+        "first_job_pages": 0.63
+      },
+      "priors": {
+        "salary_started": 0.55,
+        "new_employer": 0.2,
+        "first_job_pages": 0.15
+      },
+      "support": {
+        "salary_started": 1,
+        "new_employer": 106,
+        "first_job_pages": 42
+      }
+    },
+    "moving_out": {
+      "label": "Moving out",
+      "sensitive": false,
+      "positives": 28,
+      "rows": 12000,
+      "trained": false,
+      "note": "fewer than 30 labelled cases: expert priors kept",
+      "weights": {
+        "declared": 0.5,
+        "rent_started": 0.4,
+        "rental_deposit": 0.3,
+        "moving_company": 0.1,
+        "furnishing_spike": 0.1,
+        "moving_pages": 0.15
+      },
+      "priors": {
+        "declared": 0.5,
+        "rent_started": 0.4,
+        "rental_deposit": 0.3,
+        "moving_company": 0.1,
+        "furnishing_spike": 0.1,
+        "moving_pages": 0.15
+      },
+      "support": {
+        "declared": 5,
+        "rent_started": 19,
+        "rental_deposit": 17,
+        "moving_company": 21,
+        "furnishing_spike": 135,
+        "moving_pages": 18
+      }
+    },
+    "cohabitation": {
+      "label": "Moving in together",
+      "sensitive": false,
+      "positives": 35,
+      "rows": 12000,
+      "test": {
+        "positives": 7,
+        "rows": 2332,
+        "learned": {
+          "auc": 0.641,
+          "precision": 0.0,
+          "recall": 0.0,
+          "shown": 1,
+          "brier": 0.003,
+          "black_box_auc": null
+        },
+        "expert_priors": {
+          "auc": 0.641,
+          "precision": 0.0,
+          "recall": 0.0,
+          "shown": 1,
+          "brier": 0.003
+        }
+      },
+      "trained": true,
+      "weights": {
+        "declared": 0.5,
+        "rent_started": 0.2,
+        "moving_company": 0.0,
+        "living_together_pages": 0.25
+      },
+      "priors": {
+        "declared": 0.5,
+        "rent_started": 0.2,
+        "moving_company": 0.1,
+        "living_together_pages": 0.25
+      },
+      "support": {
+        "declared": 5,
+        "rent_started": 19,
+        "moving_company": 21,
+        "living_together_pages": 19
+      }
+    },
+    "wedding": {
+      "label": "Getting married",
+      "sensitive": false,
+      "positives": 37,
+      "rows": 12000,
+      "test": {
+        "positives": 3,
+        "rows": 2332,
+        "learned": {
+          "auc": 0.832,
+          "precision": 0.0,
+          "recall": 0.0,
+          "shown": 1,
+          "brier": 0.0016,
+          "black_box_auc": 0.501
+        },
+        "expert_priors": {
+          "auc": 0.832,
+          "precision": 0.167,
+          "recall": 0.333,
+          "shown": 6,
+          "brier": 0.002
+        }
+      },
+      "trained": true,
+      "weights": {
+        "declared": 0.5,
+        "wedding_services": 0.24,
+        "jewelry_purchase": 0.19,
+        "wedding_pages": 0.09
+      },
+      "priors": {
+        "declared": 0.5,
+        "wedding_services": 0.45,
+        "jewelry_purchase": 0.2,
+        "wedding_pages": 0.2
+      },
+      "support": {
+        "declared": 5,
+        "wedding_services": 42,
+        "jewelry_purchase": 31,
+        "wedding_pages": 30
+      }
+    },
+    "job_loss": {
+      "label": "Job loss",
+      "sensitive": true,
+      "positives": 45,
+      "rows": 12000,
+      "test": {
+        "positives": 10,
+        "rows": 2332,
+        "learned": {
+          "auc": 0.849,
+          "precision": 0.75,
+          "recall": 0.6,
+          "shown": 8,
+          "brier": 0.0022,
+          "black_box_auc": 0.75
+        },
+        "expert_priors": {
+          "auc": 0.848,
+          "precision": 0.75,
+          "recall": 0.6,
+          "shown": 8,
+          "brier": 0.0028
+        }
+      },
+      "trained": true,
+      "weights": {
+        "declared": 0.5,
+        "unemployment_started": 0.23,
+        "salary_stopped": 0.0,
+        "job_loss_pages": 0.42
+      },
+      "priors": {
+        "declared": 0.5,
+        "unemployment_started": 0.6,
+        "salary_stopped": 0.3,
+        "job_loss_pages": 0.2
+      },
+      "support": {
+        "declared": 6,
+        "unemployment_started": 39,
+        "salary_stopped": 68,
+        "job_loss_pages": 46
+      }
+    },
+    "new_job": {
+      "label": "New job",
+      "sensitive": false,
+      "positives": 102,
+      "rows": 12000,
+      "test": {
+        "positives": 16,
+        "rows": 2332,
+        "learned": {
+          "auc": 0.905,
+          "precision": 0.684,
+          "recall": 0.812,
+          "shown": 19,
+          "brier": 0.0032,
+          "black_box_auc": 0.905
+        },
+        "expert_priors": {
+          "auc": 0.905,
+          "precision": 0.684,
+          "recall": 0.812,
+          "shown": 19,
+          "brier": 0.0031
+        }
+      },
+      "trained": true,
+      "weights": {
+        "declared": 0.5,
+        "new_employer": 0.73
+      },
+      "priors": {
+        "declared": 0.5,
+        "new_employer": 0.6
+      },
+      "support": {
+        "declared": 10,
+        "new_employer": 106
+      }
+    },
+    "retirement": {
+      "label": "Retirement",
+      "sensitive": false,
+      "positives": 63,
+      "rows": 12000,
+      "test": {
+        "positives": 8,
+        "rows": 2332,
+        "learned": {
+          "auc": 0.864,
+          "precision": 1.0,
+          "recall": 0.75,
+          "shown": 6,
+          "brier": 0.0009,
+          "black_box_auc": 0.865
+        },
+        "expert_priors": {
+          "auc": 0.864,
+          "precision": 1.0,
+          "recall": 0.75,
+          "shown": 6,
+          "brier": 0.003
+        }
+      },
+      "trained": true,
+      "weights": {
+        "declared": 0.5,
+        "pension_started": 0.94,
+        "salary_stopped": 0.01,
+        "insurance_payout": 0.2,
+        "retirement_pages": 0.01
+      },
+      "priors": {
+        "declared": 0.5,
+        "pension_started": 0.6,
+        "salary_stopped": 0.25,
+        "insurance_payout": 0.2,
+        "retirement_pages": 0.15
+      },
+      "support": {
+        "declared": 0,
+        "pension_started": 38,
+        "salary_stopped": 68,
+        "insurance_payout": 7,
+        "retirement_pages": 1041
+      }
+    },
+    "inheritance": {
+      "label": "Inheritance received",
+      "sensitive": true,
+      "positives": 20,
+      "rows": 12000,
+      "trained": false,
+      "note": "fewer than 30 labelled cases: expert priors kept",
+      "weights": {
+        "notary_inflow": 0.6,
+        "inheritance_pages": 0.2
+      },
+      "priors": {
+        "notary_inflow": 0.6,
+        "inheritance_pages": 0.2
+      },
+      "support": {
+        "notary_inflow": 24,
+        "inheritance_pages": 31
+      }
+    },
+    "separation": {
+      "label": "Separation",
+      "sensitive": true,
+      "positives": 22,
+      "rows": 12000,
+      "trained": false,
+      "note": "fewer than 30 labelled cases: expert priors kept",
+      "weights": {
+        "declared": 0.5,
+        "rent_started": 0.2,
+        "separation_pages": 0.35
+      },
+      "priors": {
+        "declared": 0.5,
+        "rent_started": 0.2,
+        "separation_pages": 0.35
+      },
+      "support": {
+        "declared": 5,
+        "rent_started": 19,
+        "separation_pages": 17
+      }
+    },
+    "child_to_higher_education": {
+      "label": "A child starting higher education",
+      "sensitive": false,
+      "positives": 25,
+      "rows": 12000,
+      "trained": false,
+      "note": "fewer than 30 labelled cases: expert priors kept",
+      "weights": {
+        "tuition_paid": 0.5,
+        "rent_started": 0.15,
+        "studying_pages": 0.2
+      },
+      "priors": {
+        "tuition_paid": 0.5,
+        "rent_started": 0.15,
+        "studying_pages": 0.2
+      },
+      "support": {
+        "tuition_paid": 38,
+        "rent_started": 19,
+        "studying_pages": 43
+      }
+    },
+    "travel": {
+      "label": "Travel coming up",
+      "sensitive": false,
+      "positives": 0,
+      "rows": 12000,
+      "trained": false,
+      "note": "fewer than 30 labelled cases: expert priors kept",
+      "weights": {
+        "flight_booked": 0.4,
+        "stay_booked": 0.3,
+        "paying_abroad": 0.2,
+        "travel_pages": 0.2
+      },
+      "priors": {
+        "flight_booked": 0.4,
+        "stay_booked": 0.3,
+        "paying_abroad": 0.2,
+        "travel_pages": 0.2
+      },
+      "support": {
+        "flight_booked": 1151,
+        "stay_booked": 1467,
+        "paying_abroad": 320,
+        "travel_pages": 1472
+      }
+    }
+  }
+}

@@ -1,0 +1,343 @@
+{
+  "format": 1,
+  "trained_at": "2026-09-30T19:35:31+00:00",
+  "snapshots": [
+    "2026-09-30",
+    "2026-06-30",
+    "2026-03-31",
+    "2025-12-31"
+  ],
+  "customers": 2462,
+  "threshold": "ACTIVE >= 0.40 (backend)",
+  "moments": {
+    "FIRST_SALARY": {
+      "event": "first_job",
+      "signals": [
+        "FIRST_RECURRING_SALARY",
+        "SALARY_RECEIVED",
+        "LOW_EMERGENCY_BUFFER"
+      ],
+      "prior": [
+        0.7,
+        0.15,
+        0.1
+      ],
+      "positives": 39,
+      "support": [
+        3,
+        6606,
+        1715
+      ],
+      "test": {
+        "positives": 10,
+        "hand_set": {
+          "auc": 0.84,
+          "precision": 0.0,
+          "recall": 0.0,
+          "shown": 1,
+          "brier": 0.0237
+        },
+        "learned": {
+          "auc": 0.5,
+          "precision": 0.0,
+          "recall": 0.0,
+          "shown": 1,
+          "brier": 0.0055
+        }
+      },
+      "learned": [
+        0.7,
+        0.0,
+        0.01
+      ]
+    },
+    "NEW_PARENT": {
+      "event": "birth",
+      "signals": [
+        "PARENTHOOD_DECLARED",
+        "CHILD_ACCOUNT_OPENED",
+        "CHILD_RELATED_EXPENSE",
+        "NEW_RECURRING_CHILD_EXPENSES",
+        "CHILD_SAVINGS_PAGE_VIEW"
+      ],
+      "prior": [
+        0.55,
+        0.25,
+        0.2,
+        0.15,
+        0.1
+      ],
+      "positives": 192,
+      "support": [
+        40,
+        0,
+        554,
+        9,
+        305
+      ],
+      "test": {
+        "positives": 47,
+        "hand_set": {
+          "auc": 0.882,
+          "precision": 1.0,
+          "recall": 0.213,
+          "shown": 10,
+          "brier": 0.0153
+        },
+        "learned": {
+          "auc": 0.881,
+          "precision": 1.0,
+          "recall": 0.255,
+          "shown": 12,
+          "brier": 0.015
+        }
+      },
+      "learned": [
+        0.66,
+        0.25,
+        0.19,
+        0.15,
+        0.29
+      ]
+    },
+    "RETIREMENT_TRANSITION": {
+      "event": "retirement",
+      "signals": [
+        "RECURRING_PENSION_STARTED",
+        "SALARY_STOPPED",
+        "RETIREMENT_DECLARED",
+        "RETIREMENT_PAGE_VIEW",
+        "HIGH_IDLE_CASH"
+      ],
+      "prior": [
+        0.45,
+        0.35,
+        0.3,
+        0.1,
+        0.1
+      ],
+      "positives": 51,
+      "support": [
+        14,
+        81,
+        0,
+        562,
+        5182
+      ],
+      "test": {
+        "positives": 8,
+        "hand_set": {
+          "auc": 0.927,
+          "precision": 1.0,
+          "recall": 0.25,
+          "shown": 2,
+          "brier": 0.0085
+        },
+        "learned": {
+          "auc": 0.866,
+          "precision": 1.0,
+          "recall": 0.125,
+          "shown": 1,
+          "brier": 0.0028
+        }
+      },
+      "learned": [
+        0.45,
+        0.28,
+        0.3,
+        0.04,
+        0.0
+      ]
+    },
+    "TRAVEL": {
+      "event": "travel",
+      "signals": [
+        "AIR_TRAVEL_ACTIVITY",
+        "HOTEL_BOOKING",
+        "TRAVEL_PAGE_VIEW",
+        "FOREIGN_PAYMENT_SETTINGS_VIEWED"
+      ],
+      "prior": [
+        0.35,
+        0.25,
+        0.2,
+        0.2
+      ],
+      "positives": 0,
+      "support": [
+        423,
+        580,
+        946,
+        4174
+      ],
+      "learned": [
+        0.35,
+        0.25,
+        0.2,
+        0.2
+      ],
+      "note": "fewer than 30 cases"
+    },
+    "CAR_PROJECT": {
+      "event": "car_purchase",
+      "signals": [
+        "AUTOMOTIVE_TRANSACTION",
+        "ELECTRIC_CAR_LOAN_PAGE_VIEW",
+        "ELECTRIC_CAR_LOAN_SIMULATION",
+        "CAR_FINANCING_KBC_SEARCH"
+      ],
+      "prior": [
+        0.25,
+        0.3,
+        0.3,
+        0.15
+      ],
+      "positives": 125,
+      "support": [
+        59,
+        0,
+        0,
+        244
+      ],
+      "test": {
+        "positives": 25,
+        "hand_set": {
+          "auc": 0.775,
+          "precision": null,
+          "recall": 0.0,
+          "shown": 0,
+          "brier": 0.0098
+        },
+        "learned": {
+          "auc": 0.775,
+          "precision": 1.0,
+          "recall": 0.44,
+          "shown": 11,
+          "brier": 0.0072
+        }
+      },
+      "learned": [
+        0.94,
+        0.3,
+        0.3,
+        0.12
+      ]
+    },
+    "HOME_BUYING": {
+      "event": "home_purchase",
+      "signals": [
+        "MORTGAGE_SIMULATION",
+        "REPEATED_MORTGAGE_SIMULATION",
+        "MORTGAGE_PAGE_VIEW",
+        "HOME_KBC_SEARCH"
+      ],
+      "prior": [
+        0.35,
+        0.25,
+        0.25,
+        0.15
+      ],
+      "positives": 65,
+      "support": [
+        152,
+        27,
+        518,
+        169
+      ],
+      "test": {
+        "positives": 14,
+        "hand_set": {
+          "auc": 0.848,
+          "precision": 0.3,
+          "recall": 0.643,
+          "shown": 30,
+          "brier": 0.0105
+        },
+        "learned": {
+          "auc": 0.817,
+          "precision": null,
+          "recall": 0.0,
+          "shown": 0,
+          "brier": 0.005
+        }
+      },
+      "learned": [
+        0.12,
+        0.44,
+        0.0,
+        0.07
+      ]
+    },
+    "CASHFLOW_PRESSURE": {
+      "event": null,
+      "signals": [
+        "LOW_PROJECTED_BALANCE",
+        "LARGE_UNEXPECTED_EXPENSE",
+        "LOW_EMERGENCY_BUFFER"
+      ],
+      "prior": [
+        0.55,
+        0.35,
+        0.1
+      ],
+      "positives": 0,
+      "support": [
+        875,
+        0,
+        1715
+      ],
+      "learned": [
+        0.55,
+        0.35,
+        0.1
+      ],
+      "note": "no ground truth for this moment"
+    },
+    "LARGE_CASH_INFLOW": {
+      "event": "inheritance",
+      "signals": [
+        "LARGE_CASH_INFLOW",
+        "HIGH_IDLE_CASH"
+      ],
+      "prior": [
+        0.8,
+        0.2
+      ],
+      "positives": 16,
+      "support": [
+        129,
+        5182
+      ],
+      "learned": [
+        0.8,
+        0.2
+      ],
+      "note": "fewer than 30 cases"
+    },
+    "INVESTMENT_INTEREST": {
+      "event": null,
+      "signals": [
+        "INVESTMENT_SIMULATION",
+        "INVESTMENT_PAGE_VIEW",
+        "INVESTMENT_KBC_SEARCH"
+      ],
+      "prior": [
+        0.4,
+        0.3,
+        0.2
+      ],
+      "positives": 0,
+      "support": [
+        0,
+        2388,
+        475
+      ],
+      "learned": [
+        0.4,
+        0.3,
+        0.2
+      ],
+      "note": "no ground truth for this moment"
+    }
+  }
+}
