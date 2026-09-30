@@ -128,7 +128,7 @@ class _FakeDecision:
 
 
 class _FakeExperience:
-    def build(self, customer, context, intents, decision, now):
+    def build(self, customer, context, intents, decision, now, events=()):
         return PersonalizedExperience(
             customer_id=customer.id, mode="CALM",
             hero=Hero(type="CALM", title="t", subtitle="s", tone="calm"),
