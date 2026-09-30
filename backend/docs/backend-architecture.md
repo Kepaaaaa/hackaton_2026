@@ -1,6 +1,6 @@
 # KBC Context: backend architecture
 
-Design notes behind [backend/README.md](../backend/README.md). The full spec and the frozen data contracts are in [BACKEND_TASKS.md](../BACKEND_TASKS.md) (A.6 to A.9).
+Design notes behind the [README](../../README.md).
 
 ## Principles
 
@@ -17,13 +17,13 @@ Design notes behind [backend/README.md](../backend/README.md). The full spec and
 | Step | Code | Rules |
 |---|---|---|
 | Snapshot | `engines/financial_snapshot.py` | formulas in A.9 |
-| Signals | `engines/signal_engine.py` | [`rules/signals.py`](../backend/app/rules/signals.py) |
-| Moments | `engines/context_engine.py` | [`rules/moments.py`](../backend/app/rules/moments.py) |
-| Intents | `engines/intent_engine.py` | [`rules/intents.py`](../backend/app/rules/intents.py) |
-| Decision | `engines/decision_engine.py` | [`rules/decisions.py`](../backend/app/rules/decisions.py), [`rules/journeys.py`](../backend/app/rules/journeys.py) |
-| Experience | `engines/experience_builder.py`, `engines/calculators.py` | [`rules/copy.py`](../backend/app/rules/copy.py) |
+| Signals | `engines/signal_engine.py` | [`rules/signals.py`](../app/rules/signals.py) |
+| Moments | `engines/context_engine.py` | [`rules/moments.py`](../app/rules/moments.py) |
+| Intents | `engines/intent_engine.py` | [`rules/intents.py`](../app/rules/intents.py) |
+| Decision | `engines/decision_engine.py` | [`rules/decisions.py`](../app/rules/decisions.py), [`rules/journeys.py`](../app/rules/journeys.py) |
+| Experience | `engines/experience_builder.py`, `engines/calculators.py` | [`rules/copy.py`](../app/rules/copy.py) |
 
-The rule formats themselves (`SignalEventRule`, `MomentRule`, `IntentRule`, `Condition`, `SuppressionRule`...) are Pydantic models in [`rules/schema.py`](../backend/app/rules/schema.py), so a malformed rule fails at import time.
+The rule formats themselves (`SignalEventRule`, `MomentRule`, `IntentRule`, `Condition`, `SuppressionRule`...) are Pydantic models in [`rules/schema.py`](../app/rules/schema.py), so a malformed rule fails at import time.
 
 If the customer has turned personalization off, the pipeline stops after the snapshot and returns `NO_ACTION` with reason `NO_CONSENT`.
 

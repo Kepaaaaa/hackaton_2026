@@ -1,6 +1,6 @@
 # KBC Context: API examples
 
-Request and response samples for the main endpoints. The endpoint list is in [backend/README.md](../backend/README.md#6-endpoints), and the live schema is at `/docs` when the API runs.
+Request and response samples for the main endpoints. The endpoint list is in [README.md](../../README.md#6-endpoints), and the live schema is at `/docs` when the API runs.
 
 The values come from the real pipeline on the seed data, with the clock at `2026-10-01T09:00:00Z`. Responses are **trimmed**: `…` marks removed fields, and `under_the_hood` is omitted (it repeats the full chain: profile, products, snapshot, signals, moments, intents, decision).
 
